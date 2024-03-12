@@ -22,7 +22,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
 
 const corsOptions = {
-  origin: "https://ecom-e9ps.onrender.com", // Frontend origin
+  origin: "http://localhost:3000", // Frontend origin
   credentials: true, // Accept credentials (cookies, etc.)
 };
 
