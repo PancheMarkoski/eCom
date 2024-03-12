@@ -11,19 +11,19 @@ import { getAllProducts } from "../../features/product/productSlice";
 import { getUserWishlist } from "../../features/user/userSlice";
 
 const Home = () => {
-  const dispatch = useDispatch();
-  const products = useSelector((state) => state.products.products);
-  useEffect(() => {
-    dispatch(getAllProducts());
-    dispatch(getUserWishlist());
-  }, []);
+  // const dispatch = useDispatch();
+  // const products = useSelector((state) => state.products.products);
+  // useEffect(() => {
+  //   dispatch(getAllProducts());
+  //   dispatch(getUserWishlist());
+  // }, []);
 
-  const specialProducts =
-    products && products?.filter((product) => product.tags.includes("special"));
-  const featuredProducts =
-    products && products.filter((product) => product.tags.includes("featured"));
-  const popularProducts =
-    products && products.filter((product) => product.tags.includes("popular"));
+  // const specialProducts =
+  //   products && products?.filter((product) => product.tags.includes("special"));
+  // const featuredProducts =
+  //   products && products.filter((product) => product.tags.includes("featured"));
+  // const popularProducts =
+  //   products && products.filter((product) => product.tags.includes("popular"));
 
   return (
     <>
@@ -113,7 +113,7 @@ const Home = () => {
         <div className="row">
           <div className="col-12">
             <div className="services d-flex align-items-center justify-content-between">
-              {services?.map((service, index) => {
+              {/* {services?.map((service, index) => {
                 return (
                   <div key={index} className="d-flex align-items-center gap-15">
                     <img src={service.image} alt={service.title} />
@@ -123,7 +123,7 @@ const Home = () => {
                     </div>
                   </div>
                 );
-              })}
+              })} */}
             </div>
           </div>
         </div>
@@ -199,10 +199,10 @@ const Home = () => {
           <div className="col-12">
             <h3 className="section-heading">Featured Collection</h3>
           </div>
-          {featuredProducts &&
+          {/* {featuredProducts &&
             featuredProducts?.map((product) => (
               <ProductCard key={product._id} data={product} />
-            ))}
+            ))} */}
         </div>
       </Container>
 
@@ -274,10 +274,10 @@ const Home = () => {
           </div>
         </div>
         <div className="row">
-          {specialProducts &&
+          {/* {specialProducts &&
             specialProducts?.map((product) => (
               <SpecialProduct key={product._id} data={product} />
-            ))}
+            ))} */}
         </div>
       </Container>
 
@@ -288,10 +288,10 @@ const Home = () => {
           </div>
         </div>
         <div className="row">
-          {popularProducts &&
+          {/* {popularProducts &&
             popularProducts.map((product) => (
               <ProductCard key={product._id} data={product} />
-            ))}
+            ))} */}
         </div>
       </Container>
 

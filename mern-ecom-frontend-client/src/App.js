@@ -36,21 +36,21 @@ function App() {
         <Routes>
           <Route path="/" element={<Layout />}>
             <Route index element={<Home />} />
-            <Route path="about" element={<About />} />
+            {/* <Route path="about" element={<About />} />
             <Route path="contact" element={<Contact />} />
             <Route path="product" element={<OurStore />} />
             <Route path="product/:id" element={<SingleProduct />} />
             <Route path="blogs" element={<Blogs />} />
             <Route path="blog/:id" element={<SingleBlog />} />
-            <Route path="compare-product" element={<CompareProduct />} />
-            <Route
+            <Route path="compare-product" element={<CompareProduct />} /> */}
+            {/* <Route
               path="wishlist"
               element={
                 <PrivateRoutes>
                   <Wishlist />
                 </PrivateRoutes>
               }
-            />
+            /> */}
             <Route
               path="login"
               element={
@@ -69,7 +69,7 @@ function App() {
               }
             />
             <Route path="reset-password/:token" element={<Resetpassword />} />
-            <Route
+            {/* <Route
               path="cart"
               element={
                 <PrivateRoutes>
@@ -92,17 +92,17 @@ function App() {
                   <MyOrders />
                 </PrivateRoutes>
               }
-            />
+            /> */}
             <Route path="/profile" element={<Profile />} />
-            <Route path="privacy-policy" element={<PrivacyPolicy />} />
+            {/* <Route path="privacy-policy" element={<PrivacyPolicy />} />
             <Route path="refund-policy" element={<RefundPolicy />} />
             <Route path="shipping-policy" element={<ShippingPolicy />} />
-            <Route path="term-conditions" element={<TermAndConditions />} />
+            <Route path="term-conditions" element={<TermAndConditions />} /> */}
           </Route>
           <Route path="" element={<AdminRoutes />}>
             <Route path="/dashboard" element={<AdminLayout />}>
               <Route index element={<Dashboard />} />
-              <Route path="customers" element={<Customers />} />
+              {/* <Route path="customers" element={<Customers />} /> */}
             </Route>
           </Route>
         </Routes>
