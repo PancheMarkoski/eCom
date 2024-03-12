@@ -105,19 +105,18 @@ const resetPassword = async (resetPasswordData) => {
   }
 };
 
-// const getUsers = async (resetPasswordData) => {
-//   try {
-//     const response = await axios.put(
-//       `${base_url}/users/reset-password/${resetPasswordData.token}`,
-//       { password: resetPasswordData.password }
-//     );
-//     if (response.data) {
-//       return response.data;
-//     }
-//   } catch (error) {
-//     throw error;
-//   }
-// };
+const getUsers = async () => {
+  try {
+    const response = await axios.get(`${base_url}/users/`, {
+      withCredentials: true,
+    });
+    if (response.data) {
+      return response.data;
+    }
+  } catch (error) {
+    throw error;
+  }
+};
 
 const userService = {
   userRegister,
@@ -127,6 +126,7 @@ const userService = {
   getUserWishlist,
   forgotPasswordEmailSend,
   resetPassword,
+  getUsers,
 };
 
 export default userService;

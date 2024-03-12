@@ -8,6 +8,7 @@ const getUserfromLocalStorage = localStorage.getItem("user")
 
 const initialState = {
   user: getUserfromLocalStorage,
+  users: [],
   isError: false,
   isLoading: false,
   isSuccess: !getUserfromLocalStorage ? false : true,
@@ -95,6 +96,15 @@ export const resetPassword = createAsyncThunk(
     }
   }
 );
+
+export const getUsers = createAsyncThunk("auth/getUsers", async (thunkAPI) => {
+  try {
+    const response = await userService.getUsers();
+    return response;
+  } catch (error) {
+    return thunkAPI.rejectWithValue(error);
+  }
+});
 
 const userSlice = createSlice({
   name: "user",
@@ -212,6 +222,22 @@ const userSlice = createSlice({
         state.message = "success";
       })
       .addCase(resetPassword.rejected, (state, action) => {
+        state.isError = true;
+        state.isSuccess = false;
+        state.message = action.payload;
+        state.isLoading = false;
+      })
+      .addCase(getUsers.pending, (state) => {
+        state.isLoading = true;
+      })
+      .addCase(getUsers.fulfilled, (state, action) => {
+        state.isError = false;
+        state.isLoading = false;
+        state.isSuccess = true;
+        state.users = action.payload;
+        state.message = "success";
+      })
+      .addCase(getUsers.rejected, (state, action) => {
         state.isError = true;
         state.isSuccess = false;
         state.message = action.payload;

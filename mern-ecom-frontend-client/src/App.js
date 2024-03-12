@@ -102,7 +102,7 @@ function App() {
           <Route path="" element={<AdminRoutes />}>
             <Route path="/dashboard" element={<AdminLayout />}>
               <Route index element={<Dashboard />} />
-              {/* <Route path="customers" element={<Customers />} /> */}
+              <Route path="customers" element={<Customers />} />
             </Route>
           </Route>
         </Routes>

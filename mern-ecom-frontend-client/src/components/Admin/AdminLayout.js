@@ -18,6 +18,8 @@ import { SiBrandfolder } from "react-icons/si";
 import { BiCategoryAlt } from "react-icons/bi";
 import { Layout, Menu, theme } from "antd";
 import { useNavigate } from "react-router-dom";
+import { userLogout } from "../../features/user/userSlice";
+import { useDispatch } from "react-redux";
 
 const { Header, Sider, Content } = Layout;
 
@@ -218,7 +220,7 @@ const AdminLayout = () => {
                     style={{ height: "auto", lineHeight: "20px" }}
                     to="/"
                   >
-                    Signout
+                    Go to Site
                   </Link>
                 </li>
               </div>
