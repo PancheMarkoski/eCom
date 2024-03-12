@@ -9,7 +9,7 @@
     "server": "nodemon mern-ecom-backend/server.js",
     "client": "npm start --prefix mern-ecom-frontend-client",
     "dev": "concurrently \"npm run server\" \"npm run client\"",
-    "build": "npm install && npm install --prefix frontend && npm run build --prefix frontend"
+    "build": "npm install && npm install --prefix mern-ecom-frontend-client && npm run build --prefix mern-ecom-frontend-client"
   },
   "author": "",
   "license": "ISC",
