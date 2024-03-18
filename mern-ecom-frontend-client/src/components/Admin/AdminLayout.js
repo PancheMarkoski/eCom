@@ -88,12 +88,12 @@ const AdminLayout = () => {
                   label: "Brand List ",
                 },
                 {
-                  key: "category",
+                  key: "product-category",
                   icon: <BiCategoryAlt className="fs-4" />,
                   label: "Category",
                 },
                 {
-                  key: "list-category",
+                  key: "list-categories",
                   icon: <BiCategoryAlt className="fs-4" />,
                   label: "Category List",
                 },

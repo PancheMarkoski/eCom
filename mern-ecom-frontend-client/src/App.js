@@ -28,6 +28,14 @@ import AdminRoutes from "./routing/AdminRoutes";
 import AdminLayout from "./components/Admin/AdminLayout";
 import Dashboard from "./pages/admin/Dashboard";
 import Customers from "./pages/admin/Customers";
+import AddProduct from "./pages/admin/AddProduct";
+import Productlist from "./pages/admin/Productlist";
+import AddBrand from "./pages/admin/AddBrand";
+import Brandlist from "./pages/admin/Brandlist";
+import AddProductCategory from "./pages/admin/AddProductCategory";
+import ProductCategoriesList from "./pages/admin/ProductCategorieslist";
+import AddColor from "./pages/admin/AddColor";
+import Colorlist from "./pages/admin/Colorlist";
 
 function App() {
   return (
@@ -103,6 +111,24 @@ function App() {
             <Route path="/dashboard" element={<AdminLayout />}>
               <Route index element={<Dashboard />} />
               <Route path="customers" element={<Customers />} />
+              <Route path="product" element={<AddProduct />} />
+              <Route path="product/:id" element={<AddProduct />} />
+              <Route path="list-product" element={<Productlist />} />
+              <Route path="brand" element={<AddBrand />} />
+              <Route path="brand/:id" element={<AddBrand />} />
+              <Route path="list-brand" element={<Brandlist />} />
+              <Route path="product-category" element={<AddProductCategory />} />
+              <Route
+                path="product-category/:id"
+                element={<AddProductCategory />}
+              />
+              <Route
+                path="list-categories"
+                element={<ProductCategoriesList />}
+              />
+              <Route path="color" element={<AddColor />} />
+              <Route path="color/:id" element={<AddColor />} />
+              <Route path="list-color" element={<Colorlist />} />
             </Route>
           </Route>
         </Routes>

@@ -1,7 +1,7 @@
 import axios from "axios";
 import { base_url } from "../../utils/baseUrl";
 
-const getAllProducts = async (filters = {}) => {
+const getProducts = async (filters = {}) => {
   try {
     // Construct query string from filters object
     const queryString = Object.keys(filters)
@@ -16,16 +16,12 @@ const getAllProducts = async (filters = {}) => {
       })
       .join("&");
 
-    const response = await axios.get(`${base_url}product/?${queryString}`);
+    const response = await axios.get(`${base_url}/products/?${queryString}`);
     if (response.data) {
       return response.data;
     }
   } catch (error) {
-    const errorMessage =
-      error.response && error.response.data && error.response.data.message
-        ? error.response.data.message
-        : "Failed to fetch products. Please try again.";
-    throw new Error(errorMessage);
+    throw error;
   }
 };
 
@@ -46,18 +42,14 @@ const addProductToWishlist = async (productId) => {
   }
 };
 
-const getProduct = async (productId) => {
+const getProductById = async (productId) => {
   try {
-    const response = await axios.get(`${base_url}product/${productId}`);
+    const response = await axios.get(`${base_url}/products/${productId}`);
     if (response.data) {
       return response.data;
     }
   } catch (error) {
-    const errorMessage =
-      error.response && error.response.data && error.response.data.message
-        ? error.response.data.message
-        : "Failed to fetch blog data. Please try again.";
-    throw new Error(errorMessage);
+    throw error;
   }
 };
 
@@ -79,11 +71,58 @@ const rateProduct = async (rateProductData) => {
   }
 };
 
+const createProduct = async (data) => {
+  try {
+    const response = await axios.post(`${base_url}/products/`, data, {
+      withCredentials: true,
+    });
+
+    if (response.data) {
+      return response.data;
+    }
+  } catch (error) {
+    throw error;
+  }
+};
+
+const updateProduct = async (product) => {
+  const response = await axios.put(
+    `${base_url}/products/${product.id}`,
+    {
+      title: product.title,
+      description: product.description,
+      price: product.price,
+      brand: product.brand,
+      category: product.category,
+      tags: product.tags,
+      color: product.color,
+      quantity: product.quantity,
+      images: product.images,
+    },
+    { withCredentials: true }
+  );
+
+  return response.data;
+};
+
+const deleteProduct = async (productId) => {
+  const response = await axios.delete(
+    `${base_url}/products/${productId}`,
+
+    { withCredentials: true }
+  );
+
+  return response.data;
+};
+
 const productService = {
-  getAllProducts,
+  getProducts,
   addProductToWishlist,
-  getProduct,
+  getProductById,
   rateProduct,
+  createProduct,
+  updateProduct,
+  deleteProduct,
 };
 
 export default productService;

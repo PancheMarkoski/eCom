@@ -11,8 +11,8 @@ import Container from "../../../components/Container";
 import { useDispatch, useSelector } from "react-redux";
 import { useLocation, useNavigate } from "react-router-dom";
 import {
-  getProduct,
-  getAllProducts,
+  getProductById,
+  getProducts,
 } from "../../../features/product/productSlice";
 import { stripHtmlTags } from "../../../utils/helperFunctions/stripHtmlTags";
 import { addProductToCart, getCart } from "../../../features/cart/cartSlice";
@@ -40,8 +40,8 @@ const SingleProduct = () => {
   const [isProductInCart, setProductInCart] = useState();
 
   useEffect(() => {
-    dispatch(getProduct(productId));
-    dispatch(getAllProducts());
+    dispatch(getProductById(productId));
+    dispatch(getProducts());
     dispatch(getCart());
   }, [productId]);
 

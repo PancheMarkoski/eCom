@@ -5,9 +5,10 @@ import blogReducer from "../features/blog/blogSlice";
 import contactReducer from "../features/contact/contactSlice";
 import cartReducer from "../features/cart/cartSlice";
 import orderReducer from "../features/order/orderSlice";
-import ProductCategoriesReducer from "../features/ProductCategories/ProductCategoriesSlice";
-import BrandsReducer from "../features/Barnds/BrandsSlice";
+import productCategoriesReducer from "../features/productCategories/productCategoriesSlice";
+import brandsReducer from "../features/barnds/brandsSlice";
 import colorReducer from "../features/color/colorSlice";
+import cloudinaryImageReducer from "../features/cloudinaryImage/cloudinaryImageSlice";
 export const store = configureStore({
   reducer: {
     user: userReducer,
@@ -16,8 +17,9 @@ export const store = configureStore({
     contact: contactReducer,
     cart: cartReducer,
     order: orderReducer,
-    productCategories: ProductCategoriesReducer,
-    brands: BrandsReducer,
+    productCategories: productCategoriesReducer,
+    brands: brandsReducer,
     colors: colorReducer,
+    cloudinaryImages: cloudinaryImageReducer,
   },
 });

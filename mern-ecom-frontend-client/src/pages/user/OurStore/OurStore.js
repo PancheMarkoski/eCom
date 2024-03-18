@@ -6,10 +6,10 @@ import ProductCard from "../../../components/ProductCard";
 import Color from "../../../components/Color";
 import Container from "../../../components/Container";
 import { useDispatch, useSelector } from "react-redux";
-import { getAllProducts } from "../../../features/product/productSlice";
+import { getProducts } from "../../../features/product/productSlice";
 import { getUserWishlist } from "../../../features/user/userSlice";
-import { getAllProductCategories } from "../../../features/ProductCategories/ProductCategoriesSlice";
-import { getBrands } from "../../../features/Barnds/BrandsSlice";
+import { getProductCategories } from "../../../features/productCategories/productCategoriesSlice";
+import { getBrands } from "../../../features/barnds/brandsSlice";
 import OurStoreFilterSection from "./OurStoreFilterSection";
 import RandomProduct from "./RandomProduct";
 import ProductList from "./ProductList";
@@ -34,9 +34,9 @@ const OurStore = () => {
   const [sortOption, setSortOption] = useState("");
 
   useEffect(() => {
-    // dispatch(getAllProducts());
+    dispatch(getProducts());
     dispatch(getUserWishlist());
-    dispatch(getAllProductCategories());
+    dispatch(getProductCategories());
     dispatch(getBrands());
     dispatch(getColors());
   }, []);
@@ -51,7 +51,7 @@ const OurStore = () => {
       ...(sortOption && { sort: sortOption }),
     };
 
-    dispatch(getAllProducts(filters));
+    dispatch(getProducts(filters));
     // Dispatch other actions as needed
   }, [
     dispatch,
