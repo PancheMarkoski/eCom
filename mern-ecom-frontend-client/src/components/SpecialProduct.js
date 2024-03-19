@@ -1,17 +1,19 @@
 import React from "react";
 import ReactStars from "react-rating-stars-component";
-import { Link } from "react-router-dom";
+import { LinkContainer } from "react-router-bootstrap"; // For wrapping <Link> functionality
+import { Col, Image, ProgressBar, Badge } from "react-bootstrap"; // Import required components
 
 const SpecialProduct = ({ data }) => {
   return (
-    <div className="col-6 mb-3">
+    <Col md={6} className="mb-3">
       <div className="special-product-card">
         <div className="d-flex justify-content-between">
           <div>
-            <img
+            <Image
               src={data.images[0].url}
-              className="img-fluid"
+              fluid
               alt="Special Product"
+              className="special-product-image"
             />
           </div>
           <div className="special-product-content">
@@ -25,38 +27,38 @@ const SpecialProduct = ({ data }) => {
               activeColor="#ffd700"
             />
             <p className="price">
-              <span className="red-p">${data.price}</span> &nbsp;{" "}
+              <span className="text-danger">${data.price}</span> &nbsp;
               <strike>$200</strike>
             </p>
-            <div className="discount-till d-flex align-items-center gap-10">
+            <div className="discount-till d-flex align-items-center gap-2">
               <p className="mb-0">
-                <b>5 </b>days
+                <b>5</b> days
               </p>
-
-              <div className="d-flex gap-10 align-items-center">
-                <span className="badge rounded-circle p-3 bg-warning">1</span>:
-                <span className="badge rounded-circle p-3 bg-warning">2</span>:
-                <span className="badge rounded-circle p-3 bg-warning">3</span>
+              <div className="d-flex gap-2 align-items-center">
+                <div className="d-inline-flex justify-content-center align-items-center special-product-card__badge">
+                  1
+                </div>
+                :
+                <div className="d-inline-flex justify-content-center align-items-center special-product-card__badge">
+                  2
+                </div>
+                :
+                <div className="d-inline-flex justify-content-center align-items-center special-product-card__badge">
+                  3
+                </div>
               </div>
             </div>
-            <div className="prod-count my-3">
+            <div className="prod-count my-3 products">
               <p>Products: {data.quantity}</p>
             </div>
-            <div className="progress mt-3">
-              <div
-                className="progress-bar"
-                role="progressbar"
-                style={{ width: "50%" }}
-                aria-valuenow="50"
-                aria-valuemin="0"
-                aria-valuemax="100"
-              />
-            </div>
-            <Link className="button mt-3">Add to Cart</Link>
+            <ProgressBar now={50} className="mt-3" />
+            <LinkContainer to="/add-to-cart">
+              <a className="btn btn-primary mt-3">Add to Cart</a>
+            </LinkContainer>
           </div>
         </div>
       </div>
-    </div>
+    </Col>
   );
 };
 

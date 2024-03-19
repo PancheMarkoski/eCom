@@ -2,7 +2,7 @@ import "./App.css";
 import Layout from "./components/Layout";
 import About from "./pages/user/About";
 import Contact from "./pages/user/Contact";
-import Home from "./pages/user/Home";
+import Home from "./pages/user/Home/Home";
 import CompareProduct from "./pages/user/CompareProduct";
 import Wishlist from "./pages/user/Wishlist";
 import Login from "./pages/user/Login";

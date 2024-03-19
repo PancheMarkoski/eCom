@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
 import ReactStars from "react-rating-stars-component";
-import { Link } from "react-router-dom";
+import { LinkContainer } from "react-router-bootstrap"; // For wrapping <Link> functionality
+import { Col, Image, OverlayTrigger, Tooltip } from "react-bootstrap"; // Import required components
 import prodcompare from "../images/prodcompare.svg";
 import wish from "../images/wish.svg";
 import wishlist from "../images/wishlist.svg";
@@ -10,8 +11,7 @@ import addcart from "../images/add-cart.svg";
 import view from "../images/view.svg";
 import { addProductToWishlist } from "../features/product/productSlice";
 import { useDispatch, useSelector } from "react-redux";
-import { BsBalloonHeart } from "react-icons/bs";
-import { BsBalloonHeartFill } from "react-icons/bs";
+import { BsBalloonHeart, BsBalloonHeartFill } from "react-icons/bs";
 
 const ProductCard = ({ grid, data = {} }) => {
   const dispatch = useDispatch();
@@ -21,33 +21,32 @@ const ProductCard = ({ grid, data = {} }) => {
   const wishlistIds = validWishlistItems.map((object) => object._id);
 
   const isInWishlist = data && "_id" in data && wishlistIds.includes(data._id);
+
   return (
     <>
-      <div
-        className={grid ? `col-${grid}` : "col-3"}
-        style={{ padding: grid && "10px 4px" }}
-      >
+      <Col md={grid || 3} style={{ padding: grid && "10px 4px" }}>
         <div className="product-card position-relative">
-          <div className="wishlist-icon position-absolute">
-            <div
-              style={{ cursor: "pointer" }}
-              onClick={() => dispatch(addProductToWishlist(data._id))}
-            >
-              {isInWishlist ? <BsBalloonHeartFill /> : <BsBalloonHeart />}
-            </div>
+          <div
+            className="wishlist-icon position-absolute"
+            style={{ cursor: "pointer" }}
+            onClick={() => dispatch(addProductToWishlist(data._id))}
+          >
+            {isInWishlist ? <BsBalloonHeartFill /> : <BsBalloonHeart />}
           </div>
-          <Link to={`/product/${data._id}`} className="product-image">
-            <img
-              src={data?.images?.[0]?.url ?? watch}
-              className="img-fluid"
-              alt="Product"
-            />
-            <img
-              src={data?.images?.[1]?.url ?? watch}
-              className="img-fluid"
-              alt="Product"
-            />
-          </Link>
+          <LinkContainer to={`/product/${data._id}`}>
+            <div className="product-image">
+              <Image
+                src={data?.images?.[0]?.url ?? watch}
+                fluid
+                alt="Product"
+              />
+              <Image
+                src={data?.images?.[1]?.url ?? watch2}
+                fluid
+                alt="Product"
+              />
+            </div>
+          </LinkContainer>
           <div className="product-details">
             <h6 className="brand">{data?.brand}</h6>
             <h5 className="product-title">{data?.title}</h5>
@@ -62,19 +61,25 @@ const ProductCard = ({ grid, data = {} }) => {
           </div>
           <div className="action-bar position-absolute">
             <div className="d-flex flex-column gap-15">
-              <Link to="/compare">
-                <img src={prodcompare} alt="compare" />
-              </Link>
-              <Link to="/view">
-                <img src={view} alt="view" />
-              </Link>
-              <Link to="/add-to-cart">
-                <img src={addcart} alt="addcart" />
-              </Link>
+              <LinkContainer to="/compare">
+                <OverlayTrigger overlay={<Tooltip>Compare</Tooltip>}>
+                  <Image src={prodcompare} alt="compare" />
+                </OverlayTrigger>
+              </LinkContainer>
+              <LinkContainer to="/view">
+                <OverlayTrigger overlay={<Tooltip>View</Tooltip>}>
+                  <Image src={view} alt="view" />
+                </OverlayTrigger>
+              </LinkContainer>
+              <LinkContainer to="/add-to-cart">
+                <OverlayTrigger overlay={<Tooltip>Add to Cart</Tooltip>}>
+                  <Image src={addcart} alt="add to cart" />
+                </OverlayTrigger>
+              </LinkContainer>
             </div>
           </div>
         </div>
-      </div>
+      </Col>
     </>
   );
 };
