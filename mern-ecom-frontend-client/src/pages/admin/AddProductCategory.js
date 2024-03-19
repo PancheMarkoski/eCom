@@ -10,7 +10,7 @@ import {
   createProductCategory,
   getProductCategoryById,
   updateProductCategory,
-} from "../../features/productCategories/productCategoriesSlice";
+} from "../../features/productCategories/prodCategoriesSlice";
 
 let schema = yup.object().shape({
   title: yup.string().required("Title is Required"),

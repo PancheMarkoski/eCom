@@ -5,7 +5,7 @@ import blogReducer from "../features/blog/blogSlice";
 import contactReducer from "../features/contact/contactSlice";
 import cartReducer from "../features/cart/cartSlice";
 import orderReducer from "../features/order/orderSlice";
-import productCategoriesReducer from "../features/productCategories/productCategoriesSlice";
+import productCategoriesReducer from "../features/productCategories/prodCategoriesSlice";
 import brandsReducer from "../features/barnds/brandsSlice";
 import colorReducer from "../features/color/colorSlice";
 import cloudinaryImageReducer from "../features/cloudinaryImage/cloudinaryImageSlice";

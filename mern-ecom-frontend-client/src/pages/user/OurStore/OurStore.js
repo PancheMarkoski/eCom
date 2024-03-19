@@ -8,7 +8,7 @@ import Container from "../../../components/Container";
 import { useDispatch, useSelector } from "react-redux";
 import { getProducts } from "../../../features/product/productSlice";
 import { getUserWishlist } from "../../../features/user/userSlice";
-import { getProductCategories } from "../../../features/productCategories/productCategoriesSlice";
+import { getProductCategories } from "../../../features/productCategories/prodCategoriesSlice";
 import { getBrands } from "../../../features/barnds/brandsSlice";
 import OurStoreFilterSection from "./OurStoreFilterSection";
 import RandomProduct from "./RandomProduct";

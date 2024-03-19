@@ -7,7 +7,7 @@ import * as yup from "yup";
 import { useFormik } from "formik";
 import { useDispatch, useSelector } from "react-redux";
 import { getBrands } from "../../features/barnds/brandsSlice";
-import { getProductCategories } from "../../features/productCategories/productCategoriesSlice";
+import { getProductCategories } from "../../features/productCategories/prodCategoriesSlice";
 import { getColors } from "../../features/color/colorSlice";
 import { Select } from "antd";
 import ImageUpload from "../../components/Admin/ImageUpload";

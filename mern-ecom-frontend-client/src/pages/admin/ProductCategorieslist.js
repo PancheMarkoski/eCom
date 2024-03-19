@@ -7,7 +7,7 @@ import { Link } from "react-router-dom";
 import {
   getProductCategories,
   deleteProductCategory,
-} from "../../features/productCategories/productCategoriesSlice";
+} from "../../features/productCategories/prodCategoriesSlice";
 
 import CustomModal from "../../components/Admin/CustomModal";
 
