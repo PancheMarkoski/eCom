@@ -9,6 +9,7 @@ import productCategoriesReducer from "../features/productCategories/productCateg
 import brandsReducer from "../features/barnds/brandsSlice";
 import colorReducer from "../features/color/colorSlice";
 import cloudinaryImageReducer from "../features/cloudinaryImage/cloudinaryImageSlice";
+
 export const store = configureStore({
   reducer: {
     user: userReducer,
