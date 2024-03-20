@@ -1060,3 +1060,26 @@ div .footer-top-data {
   height: auto; /* Maintain aspect ratio */
   transition: transform 0.3s ease; /* Smooth transition for hover effect */
 }
+
+/* Single Product Starts Here */
+@media (max-width: 699px) {
+  .single-pord_mobile-flex-direction {
+    flex-direction: column-reverse;
+  }
+
+  .w-100-mobile {
+    width: 100%;
+  }
+
+  @media (max-width: 576px) {
+    .button-mobile-small {
+      padding: 5px 10px;
+      font-size: 12px;
+    }
+    .single-product__hide-btn-mobile {
+      display: none !important;
+    }
+  }
+}
+
+/* Single Product Ends Here */

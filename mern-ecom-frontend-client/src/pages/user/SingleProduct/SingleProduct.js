@@ -30,13 +30,12 @@ const SingleProduct = () => {
   const cart = useSelector((state) => state.cart.cart);
   const user = useSelector((state) => state.user);
 
-  const [color, setColor] = useState();
-  const [quantity, setQuantity] = useState(1);
-
   const popularProducts =
     allProducts &&
     allProducts.filter((product) => product.tags.includes("popular"));
 
+  const [color, setColor] = useState();
+  const [quantity, setQuantity] = useState(1);
   const [isProductInCart, setProductInCart] = useState();
 
   useEffect(() => {
@@ -68,6 +67,7 @@ const SingleProduct = () => {
     }
 
     toast.success(`Product is added to cart successfully`);
+    // Add wrap to dispatch in order to show tost notif.
     dispatch(
       addProductToCart({
         productId: productData._id,
@@ -84,8 +84,8 @@ const SingleProduct = () => {
       <BreadCrumb title={productData?.title} />
 
       <Container class1="main-product-wrapper py-5 home-wrapper-2">
-        <div className="row">
-          <div className="col-6 zoom-image-section">
+        <div className="row single-pord_mobile-flex-direction">
+          <div className="col-6 zoom-image-section w-100-mobile ">
             <ZoomImage
               imageUrl={productData?.images[0].url}
               key={productData?.images[0].public_id}
@@ -101,7 +101,7 @@ const SingleProduct = () => {
               })}
             </div>
           </div>
-          <div className="col-6">
+          <div className="col-6 w-100-mobile">
             <div>
               <div className="main-product-details">
                 <div className="border-bottom">
@@ -177,7 +177,7 @@ const SingleProduct = () => {
                     />
                   </div>
 
-                  <div className="d-flex align-items-center gap-10 flex-row mt-2 mb-3">
+                  <div className="d-flex align-items-center flex-wrap gap-10 flex-row mt-2 mb-3">
                     <h3 className="product-heading">Quantity:</h3>
                     <div>
                       <input
@@ -201,7 +201,7 @@ const SingleProduct = () => {
                               ? handleAddToCart()
                               : navigate("/login")
                           }
-                          className="button border-0"
+                          className="button border-0 button-mobile-small"
                           type="submit"
                         >
                           Add to Cart
@@ -209,13 +209,15 @@ const SingleProduct = () => {
                       ) : (
                         <button
                           onClick={() => navigate("/cart")}
-                          className="button border-0"
+                          className="button border-0 button-mobile-small"
                           type="submit"
                         >
                           Go to Cart
                         </button>
                       )}
-                      <button className="button signup">Buy It Now</button>
+                      <button className="button signup button-mobile-small">
+                        Buy It Now
+                      </button>
                     </div>
                   </div>
 
@@ -238,7 +240,7 @@ const SingleProduct = () => {
                     </p>
                   </div>
 
-                  <div className="d-flex gap-10 align-items-center my-2">
+                  <div className="d-flex flex-wrap gap-10 align-items-center my-2 single-product__hide-btn-mobile">
                     <h3 className="product-heading">Copy Product Link:</h3>
                     <button
                       onClick={() => {
