@@ -50,7 +50,6 @@ const updateProductQuantityFromCart = async (cartData) => {
 };
 
 const deleteCartItem = async (cartId) => {
-  console.log("cartId", cartId);
   try {
     const modifiedConfig = {
       // ...config,

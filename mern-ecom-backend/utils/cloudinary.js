@@ -32,10 +32,8 @@ const cloudinaryUploadImg = async (fileBuffer) => {
 };
 
 const cloudinaryDeleteImg = async (fileToDelete) => {
-  console.log("fileToDelete", fileToDelete);
   return new Promise((resolve, reject) => {
     cloudinary.uploader.destroy(fileToDelete, (error, result) => {
-      console.log("result", result);
       if (error) {
         console.error("Cloudinary Delete Error:", error);
         reject(error);

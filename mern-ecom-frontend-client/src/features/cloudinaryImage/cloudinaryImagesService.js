@@ -15,9 +15,11 @@ const uploadImages = async (data) => {
 };
 
 const deleteImage = async (imageId) => {
+  const imageName = imageId.split("/").pop();
+
   try {
     const response = await axios.delete(
-      `${base_url}/cloudinary-images/${imageId}`,
+      `${base_url}/cloudinary-images/${imageName}`,
       {
         withCredentials: true,
       }
