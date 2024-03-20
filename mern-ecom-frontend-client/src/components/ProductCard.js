@@ -37,7 +37,10 @@ const ProductCard = ({ grid, data = {} }) => {
           >
             {isInWishlist ? <BsBalloonHeartFill /> : <BsBalloonHeart />}
           </div>
-          <LinkContainer to={`/product/${data._id}`}>
+          <LinkContainer
+            to={`/product/${data._id}`}
+            style={{ cursor: "pointer" }}
+          >
             <div className="product-image">
               <Image
                 src={data?.images?.[0]?.url ?? watch}
@@ -65,19 +68,27 @@ const ProductCard = ({ grid, data = {} }) => {
           </div>
           <div className="action-bar position-absolute">
             <div className="d-flex flex-column gap-15">
-              <LinkContainer to="/compare">
+              <LinkContainer style={{ cursor: "pointer" }} to="/compare">
                 <OverlayTrigger overlay={<Tooltip>Compare</Tooltip>}>
-                  <Image src={prodcompare} alt="compare" />
+                  <Image
+                    src={prodcompare}
+                    alt="compare"
+                    style={{ cursor: "pointer" }}
+                  />
                 </OverlayTrigger>
               </LinkContainer>
               <LinkContainer to="/view">
                 <OverlayTrigger overlay={<Tooltip>View</Tooltip>}>
-                  <Image src={view} alt="view" />
+                  <Image style={{ cursor: "pointer" }} src={view} alt="view" />
                 </OverlayTrigger>
               </LinkContainer>
               <LinkContainer to="/add-to-cart">
                 <OverlayTrigger overlay={<Tooltip>Add to Cart</Tooltip>}>
-                  <Image src={addcart} alt="add to cart" />
+                  <Image
+                    style={{ cursor: "pointer" }}
+                    src={addcart}
+                    alt="add to cart"
+                  />
                 </OverlayTrigger>
               </LinkContainer>
             </div>
