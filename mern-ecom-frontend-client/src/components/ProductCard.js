@@ -24,7 +24,11 @@ const ProductCard = ({ grid, data = {} }) => {
 
   return (
     <>
-      <Col md={grid || 3} style={{ padding: grid && "10px 4px" }}>
+      <Col
+        md={grid || 3}
+        style={{ padding: grid && "10px 4px" }}
+        className="ourStore__productCard__flex-basis100"
+      >
         <div className="product-card position-relative">
           <div
             className="wishlist-icon position-absolute"

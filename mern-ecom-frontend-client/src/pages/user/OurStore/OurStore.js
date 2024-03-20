@@ -92,8 +92,8 @@ const OurStore = () => {
       <Meta title={"Our Store"} />
       <BreadCrumb title={"Our Store"} />
       <Container class1="store-wrapper home-wrapper-2 py-5">
-        <div className="row">
-          <div className="col-3">
+        <div className="row ourStore__flex">
+          <div className="col-3 ourStore_flex__filter">
             <OurStoreFilterSection
               selectedCategory={selectedCategory}
               selectedBrand={selectedBrand}

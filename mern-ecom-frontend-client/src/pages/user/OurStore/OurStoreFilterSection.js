@@ -22,7 +22,7 @@ const OurStoreFilterSection = ({
 
   return (
     <>
-      <div className="filter-card mb-3">
+      <div className="filter-card mb-3 ourStore__displayNoneMaxWidth">
         <h3 className="filter-title">Shop By Categories</h3>
         <div>
           <ul className="ps-0">

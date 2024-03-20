@@ -610,6 +610,28 @@ div .footer-top-data {
   border-radius: 3px;
 }
 
+@media (max-width: 786px) {
+  .ourStore__displayNoneMaxWidth {
+    display: none !important;
+  }
+  .ourStore__flex {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+  }
+
+  .ourStore_flex__filter {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+  }
+
+  .ourStore__productCard__flex-basis100 {
+    flex-basis: 100%;
+  }
+}
+
 /* Our store ends here */
 
 /* Contact Page */

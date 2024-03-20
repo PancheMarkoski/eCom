@@ -14,7 +14,7 @@ const RandomProduct = ({ products }) => {
   }, [products]);
 
   return (
-    <div className="filter-card mb-3">
+    <div className="filter-card mb-3 ourStore__displayNoneMaxWidth">
       <h3 className="filter-title">Random Product</h3>
       {randomProducts?.map((product) => {
         return (
