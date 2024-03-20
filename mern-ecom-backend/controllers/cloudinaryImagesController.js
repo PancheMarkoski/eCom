@@ -20,13 +20,13 @@ const uploadImages = asyncHandler(async (req, res) => {
     urls.push(newpath);
 
     // Delete the local file after it's been uploaded to Cloudinary
-    fs.unlink(path, (err) => {
-      if (err) {
-        console.error("Error deleting file:", path, err);
-      } else {
-        console.log("Successfully deleted file:", path);
-      }
-    });
+    // fs.unlink(path, (err) => {
+    //   if (err) {
+    //     console.error("Error deleting file:", path, err);
+    //   } else {
+    //     console.log("Successfully deleted file:", path);
+    //   }
+    // });
   }
 
   const images = urls.map((file) => {
