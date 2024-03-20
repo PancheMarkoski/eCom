@@ -10,21 +10,24 @@ cloudinary.config({
   api_secret: process.env.SECRET_KEY,
 });
 
-const cloudinaryUploadImg = async (fileToUpload) => {
+const cloudinaryUploadImg = async (fileBuffer) => {
   return new Promise((resolve, reject) => {
-    cloudinary.uploader.upload(fileToUpload, (error, result) => {
-      if (error) {
-        console.error("Cloudinary Upload Error:", error);
-        reject(error);
-      } else {
-        console.log("Cloudinary Upload Result:", result);
-        resolve({
-          url: result.secure_url,
-          asset_id: result.asset_id,
-          public_id: result.public_id,
-        });
+    // Use Cloudinary's upload_stream method for buffer upload
+    const uploadStream = cloudinary.uploader.upload_stream(
+      { folder: "images" }, // Specify your Cloudinary folder path here
+      (error, result) => {
+        if (error) reject(error);
+        else
+          resolve({
+            url: result.secure_url,
+            asset_id: result.asset_id,
+            public_id: result.public_id,
+          });
       }
-    });
+    );
+
+    // Write the buffer to the upload stream
+    uploadStream.end(fileBuffer);
   });
 };
 

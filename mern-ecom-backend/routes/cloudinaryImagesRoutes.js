@@ -6,7 +6,7 @@ import {
   deleteImages,
 } from "../controllers/cloudinaryImagesController.js";
 import { protect, admin } from "../middleware/authMiddleware.js";
-import { uploadPhoto, productImgResize } from "../middleware/uploadImage.js";
+import { uploadPhoto } from "../middleware/uploadImage.js";
 
 router
   .route("/")
