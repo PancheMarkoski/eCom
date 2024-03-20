@@ -18,11 +18,15 @@ const uploadImages = asyncHandler(async (req, res) => {
 });
 
 const deleteImages = asyncHandler(async (req, res) => {
-  const { id } = req.params;
+  const { id } = req.params; // 'id' is the part of the public_id following the folder name
 
-  const deleted = cloudinaryDeleteImg(id, "images");
+  // Prepend the folder name to the 'id' to form the full public_id
+  const fullPublicId = `images/${id}`;
 
-  res.json({ message: "Deleted" });
+  // Use the full public_id for deletion
+  const deleted = await cloudinaryDeleteImg(fullPublicId);
+
+  res.json(deleted); // Ensure you're awaiting the result of cloudinaryDeleteImg
 });
 
 export { uploadImages, deleteImages };
