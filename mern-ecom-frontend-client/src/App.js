@@ -46,12 +46,12 @@ function App() {
             <Route index element={<Home />} />
             <Route path="product" element={<OurStore />} />
             <Route path="product/:id" element={<SingleProduct />} />
+            <Route path="contact" element={<Contact />} />
 
             {/* <Route path="about" element={<About />} />
-            <Route path="contact" element={<Contact />} />
             <Route path="blogs" element={<Blogs />} />
             <Route path="blog/:id" element={<SingleBlog />} />
-            <Route path="compare-product" element={<CompareProduct />} /> */}
+            */}
             {/*  */}
             <Route
               path="login"
@@ -71,7 +71,6 @@ function App() {
               }
             />
             <Route path="reset-password/:token" element={<Resetpassword />} />
-            <Route path="cart" element={<Cart />} />
             {/* <Route
               path="cart"
               element={
@@ -96,13 +95,15 @@ function App() {
                 </PrivateRoutes>
               }
             /> */}
-            <Route path="/profile" element={<Profile />} />
             {/* <Route path="privacy-policy" element={<PrivacyPolicy />} />
             <Route path="refund-policy" element={<RefundPolicy />} />
             <Route path="shipping-policy" element={<ShippingPolicy />} />
             <Route path="term-conditions" element={<TermAndConditions />} /> */}
             <Route path="" element={<PrivateRoutes />}>
               <Route path="wishlist" element={<Wishlist />} />
+              <Route path="/profile" element={<Profile />} />
+              <Route path="compare-product" element={<CompareProduct />} />
+              <Route path="cart" element={<Cart />} />
             </Route>
           </Route>
           <Route path="" element={<AdminRoutes />}>

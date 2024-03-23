@@ -8,6 +8,7 @@ import NavigationHeader from "./Components/NavigationHeader/NavigationHeader";
 import MenuHeader from "./Components/MenuHeader";
 import { userLogout } from "../../features/user/userSlice";
 import { toast } from "react-toastify";
+import { clearCart } from "../../features/cart/cartSlice";
 
 const Header = () => {
   const dispatch = useDispatch();
@@ -18,7 +19,7 @@ const Header = () => {
 
   useEffect(() => {
     dispatch(getCart());
-  }, []);
+  }, [user]);
 
   const subtotal = calculateCartSubtotal(cart);
 
@@ -26,6 +27,9 @@ const Header = () => {
     dispatch(userLogout())
       .unwrap()
       .then(() => {
+        // Dispatch the clearCart action right after a successful logout
+        dispatch(clearCart());
+
         // Handle successful logout, e.g., show a toast notification
         toast.success("You have been successfully logged out.");
       })
