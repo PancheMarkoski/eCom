@@ -18,15 +18,19 @@ const Header = () => {
   const products = useSelector((state) => state.products.products);
 
   useEffect(() => {
-    if (user !== null) {
+    // Check if the nested user object exists and has properties
+    const isLoggedIn = user.user && Object.keys(user.user).length > 0;
+
+    if (isLoggedIn) {
+      // If there's a nested user object with properties, assume the user is logged in
       console.log("USER LOG IN CART");
       dispatch(getCart());
     } else {
+      // If there's no nested user object, or it's empty, assume the user is logged out
       console.log("USER LOG OUT IN CART");
-
       dispatch(clearCart());
     }
-  }, [user]);
+  }, [user.user]); // Depend on the nested user.user object
 
   const subtotal = calculateCartSubtotal(cart);
 
