@@ -52,14 +52,7 @@ function App() {
             <Route path="blogs" element={<Blogs />} />
             <Route path="blog/:id" element={<SingleBlog />} />
             <Route path="compare-product" element={<CompareProduct />} /> */}
-            {/* <Route
-              path="wishlist"
-              element={
-                <PrivateRoutes>
-                  <Wishlist />
-                </PrivateRoutes>
-              }
-            /> */}
+            {/*  */}
             <Route
               path="login"
               element={
@@ -107,6 +100,9 @@ function App() {
             <Route path="refund-policy" element={<RefundPolicy />} />
             <Route path="shipping-policy" element={<ShippingPolicy />} />
             <Route path="term-conditions" element={<TermAndConditions />} /> */}
+            <Route path="" element={<PrivateRoutes />}>
+              <Route path="wishlist" element={<Wishlist />} />
+            </Route>
           </Route>
           <Route path="" element={<AdminRoutes />}>
             <Route path="/dashboard" element={<AdminLayout />}>

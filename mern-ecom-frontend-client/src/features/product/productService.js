@@ -27,18 +27,18 @@ const getProducts = async (filters = {}) => {
 
 const addProductToWishlist = async (productId) => {
   try {
-    const response = await axios.put(`${base_url}product/wishlist`, {
-      prodId: productId,
-    });
+    const response = await axios.post(
+      `${base_url}/users/wishlist/`,
+      {
+        productId: productId,
+      },
+      { withCredentials: true }
+    );
     if (response.data) {
       return response.data;
     }
   } catch (error) {
-    const errorMessage =
-      error.response && error.response.data && error.response.data.message
-        ? error.response.data.message
-        : "Failed to fetch blog data. Please try again.";
-    throw new Error(errorMessage);
+    throw error;
   }
 };
 

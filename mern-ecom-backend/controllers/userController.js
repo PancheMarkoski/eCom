@@ -2,6 +2,7 @@ import asyncHandler from "../middleware/asyncHandler.js";
 import generateToken from "../utils/generateToken.js";
 import { sendEmail } from "../utils/emailService.js";
 import User from "../models/userModel.js";
+import Product from "../models/productModel.js";
 import crypto from "crypto";
 
 // @desc    Auth user & get token
@@ -250,6 +251,61 @@ const resetPassword = asyncHandler(async (req, res) => {
   res.json(user);
 });
 
+// @desc    Add&Remove products from user wishlist
+// @route   POST /api/wishlist"
+// @access  Private
+const addToWishlist = asyncHandler(async (req, res) => {
+  const userId = req.user._id;
+  const productId = req.body.productId;
+
+  const user = await User.findById(userId);
+
+  if (!user) {
+    return res.status(404).json({ message: "User not found" });
+  }
+
+  const product = await Product.findById(productId);
+
+  if (!product) {
+    return res.status(404).json({ message: "Product not found" });
+  }
+
+  // Check if the product is already in the user's wishlist
+  const alreadyAdded = user.wishlist.includes(productId);
+
+  if (alreadyAdded) {
+    // If the product is already in the wishlist
+    user.wishlist.pull(productId);
+  } else {
+    // If the product is not in the wishlist
+    user.wishlist.push(productId);
+  }
+
+  await user.save(); // Save the updated user document
+
+  res.status(alreadyAdded ? 200 : 201).json(user);
+});
+
+// @desc    Get wishlist from the user
+// @route   GET /api/wishlist"
+// @access  Private
+const getWishlist = asyncHandler(async (req, res) => {
+  const { _id } = req.user;
+
+  // Find the user and populate the wishlist. Exclude the password field from the response.
+  const userWithWishlist = await User.findById(_id, "-password").populate(
+    "wishlist"
+  );
+
+  // If no user is found, return a 404 Not Found response.
+  if (!userWithWishlist) {
+    return res.status(404).json({ message: "User not found" });
+  }
+
+  // Respond with the user object, excluding the password.
+  res.json(userWithWishlist);
+});
+
 export {
   authUser,
   registerUser,
@@ -262,4 +318,6 @@ export {
   updateUser,
   forgotPassword,
   resetPassword,
+  addToWishlist,
+  getWishlist,
 };

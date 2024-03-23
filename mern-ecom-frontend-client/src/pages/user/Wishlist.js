@@ -22,7 +22,7 @@ const Wishlist = () => {
         <div className="row">
           {wishlist?.map((product) => {
             return (
-              <div className="col-3">
+              <div key={product._id} className="col-3">
                 <div
                   className="wishlist-card position-relative"
                   key={product._id}

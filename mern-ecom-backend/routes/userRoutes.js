@@ -11,6 +11,8 @@ import {
   updateUser,
   forgotPassword,
   resetPassword,
+  addToWishlist,
+  getWishlist,
 } from "../controllers/userController.js";
 import { protect, admin } from "../middleware/authMiddleware.js";
 
@@ -20,12 +22,18 @@ router
   .route("/")
   .post(registerUser)
   .get(protect, admin, getUsers);
+
 router.post("/auth", authUser);
 router.post("/logout", logoutUser);
 router
   .route("/profile")
   .get(protect, getUserProfile)
   .put(protect, updateUserProfile);
+// Additional Controllers Related To User
+router
+  .route("/wishlist")
+  .get(protect, getWishlist)
+  .post(protect, addToWishlist);
 router
   .route("/:id")
   .delete(protect, admin, deleteUser)

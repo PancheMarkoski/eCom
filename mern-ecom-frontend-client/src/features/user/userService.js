@@ -46,7 +46,9 @@ const userLogout = async () => {
 
 const getUserWishlist = async () => {
   try {
-    const response = await axios.get(`${base_url}user/wishlist`);
+    const response = await axios.get(`${base_url}/users/wishlist`, {
+      withCredentials: true,
+    });
     if (response.data) {
       return response.data;
     }
