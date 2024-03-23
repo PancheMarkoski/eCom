@@ -18,7 +18,9 @@ const Header = () => {
   const products = useSelector((state) => state.products.products);
 
   useEffect(() => {
-    dispatch(getCart());
+    if (user) {
+      dispatch(getCart());
+    }
   }, [user]);
 
   const subtotal = calculateCartSubtotal(cart);
