@@ -35,7 +35,9 @@ const CartItem = ({ product, onDelete, onUpdateQuantity }) => {
         </div>
       </div>
       <div className="cart-col-2">
-        <h5 className="price">${product?.productId?.price}</h5>
+        <h5 className="price">
+          ${(product?.productId?.price ?? 0).toFixed(2)}
+        </h5>
       </div>
       <div className="cart-col-3 d-flex align-items-center gap-15">
         <div>
@@ -60,7 +62,9 @@ const CartItem = ({ product, onDelete, onUpdateQuantity }) => {
       </div>
 
       <div className="cart-col-4">
-        <h5 className="price">${product?.quantity * product?.price}</h5>
+        <h5 className="price">
+          ${((product?.quantity ?? 0) * (product?.price ?? 0)).toFixed(2)}
+        </h5>
       </div>
     </div>
   );

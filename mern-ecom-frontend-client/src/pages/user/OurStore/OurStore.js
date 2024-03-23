@@ -117,6 +117,7 @@ const OurStore = () => {
                 setGrid={setGrid}
                 sortOption={sortOption}
                 setSortOption={setSortOption}
+                products={products}
               />
             </div>
             <div className="products-list pb-5">

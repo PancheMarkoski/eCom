@@ -1,6 +1,12 @@
 import React from "react";
 
-const ProductList = ({ grid, setGrid, sortOption, setSortOption }) => {
+const ProductList = ({
+  grid,
+  setGrid,
+  sortOption,
+  setSortOption,
+  products,
+}) => {
   return (
     <div className="d-flex justify-content-between align-items-center">
       <div className="d-flex align-items-center gap-10">
@@ -23,30 +29,34 @@ const ProductList = ({ grid, setGrid, sortOption, setSortOption }) => {
       </div>
 
       <div className="d-flex align-items-center gap-10 ourStore__displayNoneMaxWidth">
-        <p className="totalproducts mb-0">21 Products</p>
+        <p className="totalproducts mb-0">{products?.length} Products</p>
         <div className="d-flex gap-10 align-items-center grid">
           <img
             onClick={() => setGrid(3)}
             src="images/gr4.svg"
             className="d-block img-fluid"
+            style={{ cursor: "pointer" }}
             alt="Grid 4"
           />
           <img
             onClick={() => setGrid(4)}
             src="images/gr3.svg"
             className="d-block img-fluid"
+            style={{ cursor: "pointer" }}
             alt="Grid 3"
           />
           <img
             onClick={() => setGrid(6)}
             src="images/gr2.svg"
             className="d-block img-fluid"
+            style={{ cursor: "pointer" }}
             alt="Grid 2"
           />
           <img
             onClick={() => setGrid(12)}
             src="images/gr.svg"
             className="d-block img-fluid"
+            style={{ cursor: "pointer" }}
             alt="Grid 1"
           />
         </div>

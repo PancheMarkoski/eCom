@@ -71,6 +71,7 @@ function App() {
               }
             />
             <Route path="reset-password/:token" element={<Resetpassword />} />
+            <Route path="cart" element={<Cart />} />
             {/* <Route
               path="cart"
               element={

@@ -8,7 +8,7 @@ import { useDispatch, useSelector } from "react-redux";
 import {
   getCart,
   deleteCartItem,
-  updateProductQuantityFromCart,
+  updateProductCartQty,
 } from "../../features/cart/cartSlice";
 import { stripHtmlTags } from "../../utils/helperFunctions/stripHtmlTags";
 import CartItem from "../../components/CartItem";
@@ -44,11 +44,11 @@ const Cart = () => {
                 key={product?._id}
                 product={product}
                 onDelete={(cartItemId) =>
-                  dispatch(deleteCartItem({ cartItemId }))
+                  dispatch(deleteCartItem({ cartId: cartItemId }))
                 }
                 onUpdateQuantity={(cartItemId, newQuantity) =>
                   dispatch(
-                    updateProductQuantityFromCart({ cartItemId, newQuantity })
+                    updateProductCartQty({ cartId: cartItemId, newQuantity })
                   )
                 }
               />

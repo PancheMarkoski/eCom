@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { getCart } from "../../features/cart/cartSlice";
 import { useDispatch, useSelector } from "react-redux";
-// import { calculateCartSubtotal } from "../../utils/helperFunctions/calculateCartSubtotal";
+import { calculateCartSubtotal } from "../../utils/helperFunctions/calculateCartSubtotal";
 import { useNavigate } from "react-router-dom";
 import PromoHeader from "./Components/PromoHeader";
 import NavigationHeader from "./Components/NavigationHeader/NavigationHeader";
@@ -20,7 +20,7 @@ const Header = () => {
     dispatch(getCart());
   }, []);
 
-  const subtotal = 1000;
+  const subtotal = calculateCartSubtotal(cart);
 
   const handleLogout = () => {
     dispatch(userLogout())

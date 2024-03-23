@@ -18,8 +18,7 @@ export const addProductToCart = createAsyncThunk(
       thunkAPI.dispatch(getCart());
       return response;
     } catch (error) {
-      toast.error(error.message);
-      return thunkAPI.rejectWithValue(error.message);
+      return thunkAPI.rejectWithValue(error);
     }
   }
 );
@@ -29,8 +28,7 @@ export const getCart = createAsyncThunk("cart/get-cart", async (thunkAPI) => {
     const response = await cartService.getCart();
     return response;
   } catch (error) {
-    toast.error(error.message);
-    return thunkAPI.rejectWithValue(error.message);
+    return thunkAPI.rejectWithValue(error);
   }
 });
 
@@ -49,19 +47,18 @@ export const deleteCartItem = createAsyncThunk(
   }
 );
 
-export const updateProductQuantityFromCart = createAsyncThunk(
+export const updateProductCartQty = createAsyncThunk(
   "cart/update-product-quantity-cart",
   async (cartData, thunkAPI) => {
     try {
-      const response = await cartService.updateProductQuantityFromCart(
-        cartData
-      );
+      const response = await cartService.updateProductCartQty(cartData);
       toast.success("Cart(product) quantity updated successfully");
       thunkAPI.dispatch(getCart());
       return response;
     } catch (error) {
       toast.error(error.message);
-      return thunkAPI.rejectWithValue(error.message);
+      console.log("error.message", error.message);
+      return thunkAPI.rejectWithValue(error);
     }
   }
 );
@@ -120,17 +117,17 @@ const cartSlice = createSlice({
         state.message = action.payload;
         state.isLoading = false;
       })
-      .addCase(updateProductQuantityFromCart.pending, (state) => {
+      .addCase(updateProductCartQty.pending, (state) => {
         state.isLoading = true;
       })
-      .addCase(updateProductQuantityFromCart.fulfilled, (state, action) => {
+      .addCase(updateProductCartQty.fulfilled, (state, action) => {
         state.isError = false;
         state.isLoading = false;
         state.isSuccess = true;
-        state.updateProductQuantityFromCart = action.payload;
+        state.updateProductCartQty = action.payload;
         state.message = "success";
       })
-      .addCase(updateProductQuantityFromCart.rejected, (state, action) => {
+      .addCase(updateProductCartQty.rejected, (state, action) => {
         state.isError = true;
         state.isSuccess = false;
         state.message = action.payload;
