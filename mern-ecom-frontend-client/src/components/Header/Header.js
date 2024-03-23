@@ -19,7 +19,12 @@ const Header = () => {
 
   useEffect(() => {
     if (user !== null) {
+      console.log("USER LOG IN CART");
       dispatch(getCart());
+    } else {
+      console.log("USER LOG OUT IN CART");
+
+      dispatch(clearCart());
     }
   }, [user]);
 
