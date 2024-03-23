@@ -18,7 +18,7 @@ const Header = () => {
   const products = useSelector((state) => state.products.products);
 
   useEffect(() => {
-    if (user) {
+    if (user !== null) {
       dispatch(getCart());
     }
   }, [user]);
