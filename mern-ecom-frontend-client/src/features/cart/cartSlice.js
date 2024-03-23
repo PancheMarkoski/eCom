@@ -41,7 +41,6 @@ export const deleteCartItem = createAsyncThunk(
       thunkAPI.dispatch(getCart());
       return response;
     } catch (error) {
-      toast.error(error.message);
       return thunkAPI.rejectWithValue(error.message);
     }
   }
@@ -56,8 +55,6 @@ export const updateProductCartQty = createAsyncThunk(
       thunkAPI.dispatch(getCart());
       return response;
     } catch (error) {
-      toast.error(error.message);
-      console.log("error.message", error.message);
       return thunkAPI.rejectWithValue(error);
     }
   }

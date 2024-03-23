@@ -67,8 +67,7 @@ export const getUserWishlist = createAsyncThunk(
       const response = await userService.getUserWishlist();
       return response;
     } catch (error) {
-      toast.error(error.message);
-      return thunkAPI.rejectWithValue(error.message);
+      return thunkAPI.rejectWithValue(error);
     }
   }
 );

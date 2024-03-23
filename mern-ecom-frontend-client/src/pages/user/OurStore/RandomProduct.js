@@ -32,7 +32,7 @@ const RandomProduct = ({ products }) => {
                 <ReactStars
                   count={5}
                   size={24}
-                  value={product?.totalRating}
+                  value={Number(product?.totalRating)}
                   edit={false}
                   activeColor="#ffd700"
                 />

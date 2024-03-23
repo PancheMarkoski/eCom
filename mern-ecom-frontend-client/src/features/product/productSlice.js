@@ -46,8 +46,7 @@ export const addProductToWishlist = createAsyncThunk(
       thunkAPI.dispatch(getUserWishlist());
       return response;
     } catch (error) {
-      toast.error(error.message);
-      return thunkAPI.rejectWithValue(error.message);
+      return thunkAPI.rejectWithValue(error);
     }
   }
 );
