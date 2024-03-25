@@ -2,7 +2,9 @@ import asyncHandler from "../middleware/asyncHandler.js";
 import Cart from "../models/cartModel.js";
 import Product from "../models/productModel.js";
 
-// User Cart
+// @desc    Add a product to the user's cart
+// @route   POST /api/carts
+// @access  Private
 const addToCart = asyncHandler(async (req, res) => {
   const { productId, color, quantity, price } = req.body;
   const { _id } = req.user;
@@ -17,7 +19,9 @@ const addToCart = asyncHandler(async (req, res) => {
   res.json(newCart);
 });
 
-// Get User Cart
+// @desc    Get the current user's cart items
+// @route   GET /api/carts
+// @access  Private
 const getUserCart = asyncHandler(async (req, res) => {
   const { _id } = req.user;
 
@@ -27,7 +31,9 @@ const getUserCart = asyncHandler(async (req, res) => {
   res.json(cart);
 });
 
-// Delete item from the cart
+// @desc    Delete an item from the user's cart
+// @route   DELETE /api/carts
+// @access  Private
 const deleteCartItem = asyncHandler(async (req, res) => {
   const { cartId } = req.body; // Get the cart item's ID from the request body
 
@@ -41,9 +47,11 @@ const deleteCartItem = asyncHandler(async (req, res) => {
     .json({ message: "Cart item deleted successfully", deletedItem });
 });
 
-// Update Product Quantity In Cart
+// @desc    Update the quantity of a product in the user's cart
+// @route   PUT /api/carts
+// @access  Private
 const updateCartItemQty = asyncHandler(async (req, res) => {
-  const { cartId, newQuantity } = req.body; // Get the cart item's ID from the request body
+  const { cartId, newQuantity } = req.body; // Get the cart item's ID and the new quantity from the request body
 
   const cartItem = await Cart.findOne({ _id: cartId });
   cartItem.quantity = newQuantity;
@@ -55,4 +63,22 @@ const updateCartItemQty = asyncHandler(async (req, res) => {
   });
 });
 
-export { addToCart, getUserCart, deleteCartItem, updateCartItemQty };
+// @desc    Clear user cart make it empty
+// @route   PUT /api/carts
+// @access  Private
+const clearUserCart = asyncHandler(async (req, res) => {
+  const { _id } = req.user;
+
+  // Delete the cart items associated with the user
+  await Cart.deleteMany({ userId: _id });
+
+  res.status(200).json({ message: "Cart cleared successfully" });
+});
+
+export {
+  addToCart,
+  getUserCart,
+  deleteCartItem,
+  updateCartItemQty,
+  clearUserCart,
+};

@@ -11,7 +11,7 @@ import cloudinaryImagesRoutes from "./routes/cloudinaryImagesRoutes.js";
 import brandRoutes from "./routes/brandRoute.js";
 import productCategoriesRoutes from "./routes/productCategoryRoutes.js";
 import cartRoutes from "./routes/cartRoutes.js";
-// import orderRoutes from './routes/orderRoutes.js';
+import orderRoutes from "./routes/orderRoutes.js";
 // import uploadRoutes from './routes/uploadRoutes.js';
 import { notFound, errorHandler } from "./middleware/errorMiddleware.js";
 import cors from "cors";
@@ -40,8 +40,7 @@ app.use("/api/cloudinary-images", cloudinaryImagesRoutes);
 app.use("/api/brands", brandRoutes);
 app.use("/api/product-categories", productCategoriesRoutes);
 app.use("/api/carts", cartRoutes);
-// app.use('/api/orders', orderRoutes);
-// app.use('/api/upload', uploadRoutes);
+app.use("/api/orders", orderRoutes);
 
 // app.get('/api/config/paypal', (req, res) =>
 //   res.send({ clientId: process.env.PAYPAL_CLIENT_ID })

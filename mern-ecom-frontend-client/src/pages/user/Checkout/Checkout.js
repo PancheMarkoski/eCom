@@ -78,12 +78,12 @@ const Checkout = () => {
                 </div>
                 <div className="d-flex justify-content-between align-items-center">
                   <p className="mb-0 total">Shipping price</p>
-                  <p className="mb-0 total-price">$5</p>
+                  <p className="mb-0 total-price">$0</p>
                 </div>
               </div>
               <div className="d-flex justify-content-between align-items-center border-bottom py-4">
                 <h4 className="total">Total</h4>
-                <h5 className="total-price">${subTotal + 5}</h5>
+                <h5 className="total-price">${subTotal}</h5>
               </div>
             </div>
           </div>

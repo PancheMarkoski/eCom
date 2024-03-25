@@ -23,11 +23,9 @@ const Header = () => {
 
     if (isLoggedIn) {
       // If there's a nested user object with properties, assume the user is logged in
-      console.log("USER LOG IN CART");
       dispatch(getCart());
     } else {
       // If there's no nested user object, or it's empty, assume the user is logged out
-      console.log("USER LOG OUT IN CART");
       dispatch(clearCart());
     }
   }, [user.user]); // Depend on the nested user.user object

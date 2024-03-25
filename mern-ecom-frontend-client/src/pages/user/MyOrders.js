@@ -6,9 +6,7 @@ import { useSelector, useDispatch } from "react-redux";
 
 const MyOrders = () => {
   const dispatch = useDispatch();
-  const orders = useSelector((state) => state.order?.userOrders?.orders);
-
-  console.log({ orders });
+  const orders = useSelector((state) => state.order?.userOrders);
 
   useEffect(() => {
     dispatch(getUserOrders());

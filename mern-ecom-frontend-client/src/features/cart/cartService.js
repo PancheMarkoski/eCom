@@ -66,11 +66,30 @@ const deleteCartItem = async ({ cartId }) => {
   }
 };
 
+const clearUserCart = async () => {
+  try {
+    const response = await axios.post(
+      `${base_url}/carts/clear-cart/`,
+      {},
+      {
+        withCredentials: true,
+      }
+    );
+
+    if (response.data) {
+      return response.data;
+    }
+  } catch (error) {
+    throw error;
+  }
+};
+
 const cartService = {
   addProductToCart,
   getCart,
   deleteCartItem,
   updateProductCartQty,
+  clearUserCart,
 };
 
 export default cartService;

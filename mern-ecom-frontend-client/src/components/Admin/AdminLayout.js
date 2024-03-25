@@ -110,7 +110,7 @@ const AdminLayout = () => {
               ],
             },
             {
-              key: "orders",
+              key: "admin-orders",
               icon: <FaClipboardList className="fs-4" />,
               label: "Orders",
             },

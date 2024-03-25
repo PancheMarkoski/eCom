@@ -36,6 +36,7 @@ import AddProductCategory from "./pages/admin/AddProductCategory";
 import ProductCategoriesList from "./pages/admin/ProductCategorieslist";
 import AddColor from "./pages/admin/AddColor";
 import Colorlist from "./pages/admin/Colorlist";
+import AdminOrders from "./pages/admin/AdminOrders";
 
 function App() {
   return (
@@ -79,22 +80,8 @@ function App() {
                 </PrivateRoutes>
               }
             />
-            <Route
-              path="checkout"
-              element={
-                <PrivateRoutes>
-                  <Checkout />
-                </PrivateRoutes>
-              }
-            />
-            <Route
-              path="/my-orders"
-              element={
-                <PrivateRoutes>
-                  <MyOrders />
-                </PrivateRoutes>
-              }
-            /> */}
+            
+         */}
             {/* <Route path="privacy-policy" element={<PrivacyPolicy />} />
             <Route path="refund-policy" element={<RefundPolicy />} />
             <Route path="shipping-policy" element={<ShippingPolicy />} />
@@ -104,6 +91,8 @@ function App() {
               <Route path="/profile" element={<Profile />} />
               <Route path="compare-product" element={<CompareProduct />} />
               <Route path="cart" element={<Cart />} />
+              <Route path="checkout" element={<Checkout />} />
+              <Route path="/my-orders" element={<MyOrders />} />
             </Route>
           </Route>
           <Route path="" element={<AdminRoutes />}>
@@ -128,6 +117,7 @@ function App() {
               <Route path="color" element={<AddColor />} />
               <Route path="color/:id" element={<AddColor />} />
               <Route path="list-color" element={<Colorlist />} />
+              <Route path="admin-orders" element={<AdminOrders />} />
             </Route>
           </Route>
         </Routes>

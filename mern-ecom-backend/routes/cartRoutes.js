@@ -4,6 +4,7 @@ import {
   getUserCart,
   updateCartItemQty,
   deleteCartItem,
+  clearUserCart,
 } from "../controllers/cartController.js";
 import { protect } from "../middleware/authMiddleware.js";
 
@@ -16,5 +17,7 @@ router
   .post(protect, addToCart) // Add an item to the cart
   .delete(protect, deleteCartItem) // Remove an item from the cart
   .put(protect, updateCartItemQty);
+
+router.post("/clear-cart", protect, clearUserCart);
 
 export default router;

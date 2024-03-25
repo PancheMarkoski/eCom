@@ -4,9 +4,10 @@ import { Link } from "react-router-dom";
 import * as yup from "yup";
 import { useFormik } from "formik";
 import { createOrder } from "../../../features/order/orderSlice";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
+import { clearCartData } from "../../../features/cart/cartSlice";
 
 let schema = yup.object().shape({
   country: yup.string().required("Country is Required"),
@@ -25,10 +26,12 @@ const CheckoutShippingInfo = ({
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
+  const user = useSelector((state) => state?.user?.user);
+
   const [initialValues, setInitialValues] = useState({
     country: "",
-    firstName: "",
-    lastName: "",
+    firstName: user ? user.firstName : "",
+    lastName: user ? user.lastName : "",
     address: "",
     city: "",
     zipcode: "",
@@ -55,9 +58,22 @@ const CheckoutShippingInfo = ({
         priceAfterDiscount,
       };
 
-      dispatch(createOrder(completeOrderData));
-      toast.success("Thank You for Your Order!");
-      navigate("/product");
+      dispatch(createOrder(completeOrderData))
+        .unwrap()
+        .then(() => {
+          // After the promise from createOrder is successfully unwrapped,
+          // clear the cart and show a success message.
+          console.log("DADA");
+          dispatch(clearCartData());
+          toast.success("Thank You for Your Order!");
+          navigate("/product");
+        })
+        .catch((error) => {
+          // Handle any errors that occur during the order creation process.
+          // The error is directly accessible due to the unwrap function.
+          console.error("Order creation failed:", error);
+          toast.error("There was an issue with your order.");
+        });
     },
   });
 
@@ -81,7 +97,9 @@ const CheckoutShippingInfo = ({
         </ol>
       </nav>
       <h4 className="title total ">Contact Information</h4>
-      <p className="user-details total">Navdeep Dahiya (nxd232@gmail.com)</p>
+      <p className="user-details total">
+        Panche Markoski (markoskipance7@gmail.com)
+      </p>
       <h4 className="mb-3">Shipping Address</h4>
       <form
         action=""
@@ -100,12 +118,10 @@ const CheckoutShippingInfo = ({
             onBlur={formik.handleBlur("country")}
             value={formik.values.country}
           >
-            <option value="" selected disabled>
-              Select Country
-            </option>
             <option value="" disabled>
-              Select Country
+              Select a Country
             </option>
+
             <option value="Macedonia">Macedonia</option>
             <option value="USA">USA</option>
             <option value="Serbia">Serbia</option>

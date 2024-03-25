@@ -60,6 +60,20 @@ export const updateProductCartQty = createAsyncThunk(
   }
 );
 
+export const clearCartData = createAsyncThunk(
+  "cart/clear-cart-data",
+  async (thunkAPI) => {
+    try {
+      const response = await cartService.clearUserCart();
+      // Dispatch the clearCart action if the backend operation was successful
+      // thunkAPI.dispatch(clearCart());
+      return response.data;
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error);
+    }
+  }
+);
+
 const cartSlice = createSlice({
   name: "Cart",
   initialState: initialState,
@@ -134,6 +148,22 @@ const cartSlice = createSlice({
         state.message = "success";
       })
       .addCase(updateProductCartQty.rejected, (state, action) => {
+        state.isError = true;
+        state.isSuccess = false;
+        state.message = action.payload;
+        state.isLoading = false;
+      })
+      .addCase(clearCartData.pending, (state) => {
+        state.isLoading = true;
+      })
+      .addCase(clearCartData.fulfilled, (state, action) => {
+        state.isError = false;
+        state.isLoading = false;
+        state.isSuccess = true;
+        state.cart = [];
+        state.message = "success";
+      })
+      .addCase(clearCartData.rejected, (state, action) => {
         state.isError = true;
         state.isSuccess = false;
         state.message = action.payload;
