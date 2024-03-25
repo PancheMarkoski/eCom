@@ -18,6 +18,7 @@ import { stripHtmlTags } from "../../../utils/helperFunctions/stripHtmlTags";
 import { addProductToCart, getCart } from "../../../features/cart/cartSlice";
 import { toast } from "react-toastify";
 import CustomerReviews from "./CustomerReviews";
+import { copyToClipboard } from "../../../utils/helperFunctions/copyToClipboard";
 
 const SingleProduct = () => {
   const dispatch = useDispatch();
@@ -49,16 +50,6 @@ const SingleProduct = () => {
       cart.some((cartItem) => cartItem.productId._id === productId)
     );
   }, [cart, productId]);
-
-  // move to helper function
-  const copyToClipboard = (text) => {
-    var textField = document.createElement("textarea");
-    textField.innerText = text;
-    document.body.appendChild(textField);
-    textField.select();
-    document.execCommand("copy");
-    textField.remove();
-  };
 
   const handleAddToCart = () => {
     if (!color) {

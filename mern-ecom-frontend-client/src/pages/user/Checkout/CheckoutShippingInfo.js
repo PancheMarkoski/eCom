@@ -63,7 +63,6 @@ const CheckoutShippingInfo = ({
         .then(() => {
           // After the promise from createOrder is successfully unwrapped,
           // clear the cart and show a success message.
-          console.log("DADA");
           dispatch(clearCartData());
           toast.success("Thank You for Your Order!");
           navigate("/product");

@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import ReactStars from "react-rating-stars-component";
 import { LinkContainer } from "react-router-bootstrap"; // For wrapping <Link> functionality
 import { Col, Image, OverlayTrigger, Tooltip } from "react-bootstrap"; // Import required components
@@ -12,15 +12,38 @@ import view from "../images/view.svg";
 import { addProductToWishlist } from "../features/product/productSlice";
 import { useDispatch, useSelector } from "react-redux";
 import { BsBalloonHeart, BsBalloonHeartFill } from "react-icons/bs";
+import { toast } from "react-toastify";
 
 const ProductCard = ({ grid, data = {} }) => {
   const dispatch = useDispatch();
 
   const userWishlist = useSelector((state) => state?.user?.wishlist?.wishlist);
-  const validWishlistItems = (userWishlist || []).filter(Boolean);
-  const wishlistIds = validWishlistItems.map((object) => object._id);
 
-  const isInWishlist = data && "_id" in data && wishlistIds.includes(data._id);
+  const [isInWishlistLocal, setIsInWishlistLocal] = useState(false);
+
+  useEffect(() => {
+    const wishlistIds =
+      userWishlist?.filter(Boolean).map((object) => object._id) || [];
+    setIsInWishlistLocal(wishlistIds.includes(data._id));
+  }, [userWishlist, data._id]);
+
+  const handleWishlistClick = (productId) => {
+    // Optimistically update the local state
+    const newStatus = !isInWishlistLocal;
+    setIsInWishlistLocal(newStatus);
+
+    // Dispatch the action to update the backend
+    dispatch(addProductToWishlist(productId))
+      .then(() => {
+        // If the update is successful, no action is needed since we've already updated the UI
+      })
+      .catch((error) => {
+        // If the update fails, revert the local state and optionally show an error message
+        setIsInWishlistLocal(!newStatus);
+        // Show an error message (e.g., using a toast notification)
+        toast.error("Failed to update wishlist. Please try again.");
+      });
+  };
 
   return (
     <>
@@ -33,9 +56,9 @@ const ProductCard = ({ grid, data = {} }) => {
           <div
             className="wishlist-icon position-absolute"
             style={{ cursor: "pointer" }}
-            onClick={() => dispatch(addProductToWishlist(data._id))}
+            onClick={() => handleWishlistClick(data._id)}
           >
-            {isInWishlist ? <BsBalloonHeartFill /> : <BsBalloonHeart />}
+            {isInWishlistLocal ? <BsBalloonHeartFill /> : <BsBalloonHeart />}
           </div>
           <LinkContainer
             to={`/product/${data._id}`}
