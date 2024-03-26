@@ -18,6 +18,9 @@ const ProductCard = ({ grid, data = {} }) => {
   const dispatch = useDispatch();
 
   const userWishlist = useSelector((state) => state?.user?.wishlist?.wishlist);
+  const totalRating = useSelector(
+    (state) => state?.products?.product?.totalRating
+  );
 
   const [isInWishlistLocal, setIsInWishlistLocal] = useState(false);
 
@@ -81,9 +84,10 @@ const ProductCard = ({ grid, data = {} }) => {
             <h6 className="brand">{data?.brand}</h6>
             <h5 className="product-title">{data?.title}</h5>
             <ReactStars
+              key={totalRating}
               count={5}
               size={24}
-              value={+data?.totalRating || 0}
+              value={Number(totalRating ? totalRating : 0)}
               edit={false}
               activeColor="#ffd700"
             />

@@ -156,7 +156,7 @@ a {
 @media (max-width: 768px) {
   /* Adjust this breakpoint as needed */
   .custom-navbar .nav-container {
-    flex-direction: column;
+    display: none;
   }
 }
 /* Header Part End Here */
@@ -179,6 +179,7 @@ footer .input-group-text {
 div .footer-top-data {
   height: 100%;
 }
+
 /* Header Part End Here */
 
 /* Home Page Start Here */

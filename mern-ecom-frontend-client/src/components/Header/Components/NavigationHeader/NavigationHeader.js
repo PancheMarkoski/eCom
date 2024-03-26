@@ -7,7 +7,14 @@ import MobileMenuButton from "./MobileMenuButton";
 import NavigationLinks from "./NavigationLinks";
 import MobileNavigationLinks from "./MobileNavigationLinks";
 
-const NavigationHeader = ({ products, navigate, user, cart, subtotal }) => {
+const NavigationHeader = ({
+  products,
+  navigate,
+  user,
+  cart,
+  subtotal,
+  handleLogout,
+}) => {
   const [isNavCollapsed, setIsNavCollapsed] = useState(true);
 
   const handleNavCollapse = () => setIsNavCollapsed(!isNavCollapsed);
@@ -25,6 +32,7 @@ const NavigationHeader = ({ products, navigate, user, cart, subtotal }) => {
             user={user}
             cart={cart}
             subtotal={subtotal}
+            handleLogout={handleLogout}
           />
         </div>
       </div>
