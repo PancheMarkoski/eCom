@@ -59,7 +59,7 @@ export const rateProduct = createAsyncThunk(
       thunkAPI.dispatch(getProductById(rateProductData.prodId));
       return response;
     } catch (error) {
-      toast.error(error.message);
+      // toast.error(error.message);
       return thunkAPI.rejectWithValue(error.message);
     }
   }

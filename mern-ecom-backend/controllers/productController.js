@@ -108,10 +108,71 @@ const deleteProduct = asyncHandler(async (req, res) => {
   res.json(deleteProduct);
 });
 
+// @desc    Rate a product
+// @route   PUT /api/products/rate
+// @access  Private
+const rateProduct = asyncHandler(async (req, res) => {
+  const { _id } = req.user;
+  const { star, prodId, comment } = req.body;
+
+  const product = await Product.findById(prodId);
+
+  if (!product) {
+    return res.status(404).json({ message: "Product not found" });
+  }
+
+  let alreadyRated = product.ratings.find(
+    (userId) => userId.postedBy.toString() === _id.toString()
+  );
+
+  if (alreadyRated) {
+    const updateRating = await Product.updateOne(
+      {
+        ratings: { $elemMatch: alreadyRated },
+      },
+      {
+        $set: { "ratings.$.star": star, "ratings.$.comment": comment },
+      },
+      { new: true }
+    );
+  } else {
+    const rateProduct = await Product.findByIdAndUpdate(
+      prodId,
+      {
+        $push: {
+          ratings: {
+            star: star,
+            comment: comment,
+            postedBy: _id,
+          },
+        },
+      },
+      { new: true }
+    );
+  }
+
+  // Calculate Total Rating
+  const getallratings = await Product.findById(prodId);
+  let totalRating = getallratings.ratings.length;
+  let ratingsum = getallratings.ratings
+    .map((item) => item.star)
+    .reduce((prev, curr) => prev + curr, 0);
+  let actualRating = Math.round(ratingsum / totalRating);
+  let finalproduct = await Product.findByIdAndUpdate(
+    prodId,
+    {
+      totalRating: actualRating,
+    },
+    { new: true }
+  );
+  res.json(finalproduct);
+});
+
 export {
   createProduct,
   getProductById,
   getProducts,
   updateProduct,
   deleteProduct,
+  rateProduct,
 };

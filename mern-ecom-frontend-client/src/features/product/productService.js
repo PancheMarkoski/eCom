@@ -56,8 +56,11 @@ const getProductById = async (productId) => {
 const rateProduct = async (rateProductData) => {
   try {
     const response = await axios.put(
-      `${base_url}product/rating`,
-      rateProductData
+      `${base_url}/products/rate`,
+      rateProductData,
+      {
+        withCredentials: true,
+      }
     );
     if (response.data) {
       return response.data;

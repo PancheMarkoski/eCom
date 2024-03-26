@@ -271,7 +271,8 @@ const SingleProduct = () => {
         </div>
       </Container>
 
-      <CustomerReviews />
+      {/* User write review */}
+      <CustomerReviews productData={productData} />
 
       <Container class1="popular-wrapper py-5 home-wrapper-2">
         <div className="row">

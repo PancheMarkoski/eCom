@@ -13,7 +13,7 @@ const Review = () => {
         return (
           <div className="review mt-3" key={review._id}>
             <div className="d-flex gap-10 align-items-center justify-content-space-between">
-              <h6 className="mb-0">{review?.postedBy?.firstname}</h6>
+              <h6 className="mb-0">{review?.postedBy?.firstName}</h6>
               <ReactStars
                 key={reactStarsKey}
                 styles={{ flexGrow: "1" }}

@@ -1,9 +1,9 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Container from "../../../components/Container";
 import ReactStars from "react-rating-stars-component";
 import { rateProduct } from "../../../features/product/productSlice";
 import { useLocation, useNavigate } from "react-router-dom";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import Review from "./Review";
 
 const CustomerReviews = () => {
@@ -11,11 +11,41 @@ const CustomerReviews = () => {
   const location = useLocation();
   const productId = location.pathname.split("/").pop();
 
-  const [orderedProduct, setOrderedProduct] = useState(true);
+  const totalRating = useSelector(
+    (state) => state?.products?.product?.totalRating
+  );
+  const totalReviews = useSelector(
+    (state) => state?.products?.product?.ratings
+  );
+
+  const userId = useSelector((state) => state?.user?.user?._id);
 
   const [star, setStar] = useState(0);
   const [comment, setComment] = useState("");
+  const [hasReviewed, setHasReviewed] = useState(false);
   const [errors, setErrors] = useState({});
+
+  useEffect(() => {
+    const userRating = totalReviews?.find(
+      (rating) => rating.postedBy._id === userId
+    );
+
+    // If a previous rating exists, pre-populate the form with the user's rating and comment
+    if (userRating) {
+      setStar(userRating.star);
+      setComment(userRating.comment);
+      setHasReviewed(true);
+    } else {
+      setHasReviewed(false);
+    }
+
+    // Cleanup function
+    return () => {
+      setStar(0); // Reset star rating to initial state
+      setComment(""); // Reset comment to initial state
+      setHasReviewed(false); // Ensure hasReviewed is reset
+    };
+  }, [productId, userId, totalReviews]);
 
   // Function to validate form
   const validateForm = () => {
@@ -44,7 +74,6 @@ const CustomerReviews = () => {
     e.preventDefault();
     const formErrors = validateForm();
     if (Object.keys(formErrors).length === 0) {
-      // console.log("Form is valid", { star, comment, prodId: productId });
       dispatch(rateProduct({ star, comment, prodId: productId }));
     } else {
       setErrors(formErrors);
@@ -62,22 +91,23 @@ const CustomerReviews = () => {
                 <h4 className="mb-2">Customer Reviews</h4>
                 <div className="d-flex align-items-center gap-10">
                   <ReactStars
+                    key={totalRating}
                     count={5}
                     size={24}
-                    value={4}
+                    value={Number(totalRating ? totalRating : 0)}
                     edit={false}
                     activeColor="#ffd700"
                   />
-                  <p className="mb-0 ">Based on 2 Reviews</p>
+                  <p className="mb-0 ">
+                    Based on {totalReviews?.length} Reviews
+                  </p>
                 </div>
               </div>
 
               <div>
-                {orderedProduct && (
-                  <a className="text-dark text-decoration-underline" href="">
-                    Write a Review
-                  </a>
-                )}
+                <p className="text-dark text-decoration-underline">
+                  Write a Review
+                </p>
               </div>
             </div>
 
@@ -89,6 +119,7 @@ const CustomerReviews = () => {
               >
                 <div>
                   <ReactStars
+                    key={star}
                     count={5}
                     size={24}
                     value={star}
@@ -113,7 +144,9 @@ const CustomerReviews = () => {
                   )}
                 </div>
                 <div className="d-flex justify-content-end">
-                  <button className="button border-0">Submit Review</button>
+                  <button className="button border-0">
+                    {hasReviewed ? "Update Review" : "Submit Review"}
+                  </button>
                 </div>
               </form>
             </div>
