@@ -33,7 +33,7 @@ const Cart = () => {
       <Container class1="cart-wrapper home-wrapper-2 py-5">
         <div className="row">
           <div className="col-12">
-            <div className="cart-header d-flex py-3 justify-content-between align-items-center">
+            <div className="cart-header d-flex py-3 justify-content-between align-items-center cart-mobile-disNone">
               <h4 className="cart-col-1">Product</h4>
               <h4 className="cart-col-2">Price</h4>
               <h4 className="cart-col-3">Quantity</h4>

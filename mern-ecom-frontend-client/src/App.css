@@ -994,6 +994,9 @@ div .footer-top-data {
     justify-content: center;
     margin-top: 20px;
   }
+  .cart-mobile-disNone {
+    display: none !important;
+  }
 }
 
 /* Cart Page End*/
@@ -1027,6 +1030,14 @@ div .footer-top-data {
 .custom-table-container table td {
   /* Add your desired spacing here, for example: */
   padding: 10px;
+}
+
+@media (max-width: 768px) {
+  .custom-table-container {
+    display: block;
+    padding: 0px;
+    overflow-x: overlay;
+  }
 }
 
 /* Table page ends here */
