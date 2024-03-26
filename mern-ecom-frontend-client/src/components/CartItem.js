@@ -19,9 +19,9 @@ const CartItem = ({ product, onDelete, onUpdateQuantity }) => {
   return (
     <div
       key={product?._id}
-      className="cart-data py-3 mb-2 d-flex justify-content-between align-items-center"
+      className="cart-data cart-mobile-flexCol py-3 mb-2 d-flex justify-content-between align-items-center"
     >
-      <div className="cart-col-1 d-flex gap-15 align-items-center">
+      <div className="cart-col-1 cart-mobile-flexCol d-flex gap-15 align-items-center cart-mobile-w100">
         <div className="w-25">
           <img
             className="img-fluid"
@@ -34,12 +34,12 @@ const CartItem = ({ product, onDelete, onUpdateQuantity }) => {
           <p>{stripHtmlTags(product?.productId?.description)}</p>
         </div>
       </div>
-      <div className="cart-col-2">
-        <h5 className="price">
+      <div className="cart-col-2 cart-mobile-w100">
+        <h5 className="price ">
           ${(product?.productId?.price ?? 0).toFixed(2)}
         </h5>
       </div>
-      <div className="cart-col-3 d-flex align-items-center gap-15">
+      <div className="cart-col-3 d-flex align-items-center gap-15 cart-mobile-w100">
         <div>
           <input
             type="number"
@@ -61,7 +61,7 @@ const CartItem = ({ product, onDelete, onUpdateQuantity }) => {
         </div>
       </div>
 
-      <div className="cart-col-4">
+      <div className="cart-col-4 cart-mobile-w100">
         <h5 className="price">
           ${((product?.quantity ?? 0) * (product?.price ?? 0)).toFixed(2)}
         </h5>

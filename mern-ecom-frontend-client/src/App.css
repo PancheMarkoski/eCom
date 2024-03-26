@@ -984,6 +984,18 @@ div .footer-top-data {
   color: var(--color-1c1c1b);
 }
 
+@media (max-width: 536px) {
+  .cart-mobile-flexCol {
+    flex-direction: column !important;
+  }
+  .cart-mobile-w100 {
+    width: 100%;
+    text-align: center;
+    justify-content: center;
+    margin-top: 20px;
+  }
+}
+
 /* Cart Page End*/
 
 /* Shipping page */
