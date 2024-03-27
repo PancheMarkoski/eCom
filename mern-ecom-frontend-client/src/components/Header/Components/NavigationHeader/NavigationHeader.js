@@ -33,6 +33,7 @@ const NavigationHeader = ({
             cart={cart}
             subtotal={subtotal}
             handleLogout={handleLogout}
+            handleNavCollapse={handleNavCollapse}
           />
         </div>
       </div>
