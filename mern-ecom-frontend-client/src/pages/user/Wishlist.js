@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import Meta from "../../components/Meta";
 import BreadCrumb from "../../components/BreadCrumb";
 import Container from "../../components/Container";
@@ -7,15 +7,27 @@ import { getUserWishlist } from "../../features/user/userSlice";
 import { addProductToWishlist } from "../../features/product/productSlice";
 import Button from "react-bootstrap/Button";
 import Card from "react-bootstrap/Card";
+import { Spinner } from "react-bootstrap";
 
 const Wishlist = () => {
   const dispatch = useDispatch();
+
+  const [loading, setLoading] = useState({});
 
   useEffect(() => {
     dispatch(getUserWishlist());
   }, []);
 
   const wishlist = useSelector((state) => state?.user?.wishlist?.wishlist);
+
+  const handleRemove = (productId) => {
+    setLoading((prev) => ({ ...prev, [productId]: true })); // Set loading state to true for this product
+
+    dispatch(addProductToWishlist(productId))
+      .unwrap()
+      .then(() => setLoading((prev) => ({ ...prev, [productId]: false }))) // Set loading state to false on success
+      .catch(() => setLoading((prev) => ({ ...prev, [productId]: false }))); // Set loading state to false on failure
+  };
 
   return (
     <>
@@ -48,10 +60,21 @@ const Wishlist = () => {
                   <Card.Title>{product.title}</Card.Title>
                   <Card.Text>${product.price}</Card.Text>
                   <Button
-                    onClick={() => dispatch(addProductToWishlist(product._id))}
+                    onClick={() => handleRemove(product._id)}
                     variant="danger"
+                    disabled={loading[product._id]}
                   >
-                    Remove
+                    {loading[product._id] ? (
+                      <Spinner
+                        as="span"
+                        animation="border"
+                        size="sm"
+                        role="status"
+                        aria-hidden="true"
+                      />
+                    ) : (
+                      "Remove"
+                    )}
                   </Button>
                 </Card.Body>
               </Card>

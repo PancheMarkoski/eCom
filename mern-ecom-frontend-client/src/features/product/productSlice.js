@@ -5,6 +5,7 @@ import { getUserWishlist } from "../user/userSlice";
 
 const initialState = {
   products: [],
+  wishlist: [],
   createdProduct: {},
   isError: false,
   isLoading: false,
