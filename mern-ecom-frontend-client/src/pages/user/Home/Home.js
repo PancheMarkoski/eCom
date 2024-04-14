@@ -13,15 +13,19 @@ import MainPagePromotions from "./Components/MainPagePromotions";
 import ServicesComponent from "./Components/ServicesComponent";
 import FamousCard from "./Components/FamousCard";
 import BrandMarquee from "./Components/BrandMarquee";
+import { getPromotedProducts } from "../../../features/promotedProducts/promotedProductsSlice";
 
 const Home = () => {
   const dispatch = useDispatch();
+
   useEffect(() => {
     dispatch(getProducts());
     dispatch(getUserWishlist());
+    dispatch(getPromotedProducts());
   }, []);
 
   const products = useSelector((state) => state.products.products);
+
   const specialProducts =
     products && products?.filter((product) => product.tags.includes("special"));
   const featuredProducts =

@@ -72,20 +72,11 @@ function App() {
               }
             />
             <Route path="reset-password/:token" element={<Resetpassword />} />
-            {/* <Route
-              path="cart"
-              element={
-                <PrivateRoutes>
-                  <Cart />
-                </PrivateRoutes>
-              }
-            />
-            
-         */}
-            {/* <Route path="privacy-policy" element={<PrivacyPolicy />} />
+
+            <Route path="privacy-policy" element={<PrivacyPolicy />} />
             <Route path="refund-policy" element={<RefundPolicy />} />
             <Route path="shipping-policy" element={<ShippingPolicy />} />
-            <Route path="term-conditions" element={<TermAndConditions />} /> */}
+            <Route path="term-conditions" element={<TermAndConditions />} />
             <Route path="" element={<PrivateRoutes />}>
               <Route path="wishlist" element={<Wishlist />} />
               <Route path="/profile" element={<Profile />} />

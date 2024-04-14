@@ -118,6 +118,25 @@ const deleteProduct = async (productId) => {
   return response.data;
 };
 
+const promoteProduct = async (productId) => {
+  const response = await axios.put(
+    `${base_url}/products/promote/${productId}`,
+    {},
+    { withCredentials: true }
+  );
+
+  return response.data;
+};
+const demoteProduct = async (productId) => {
+  const response = await axios.put(
+    `${base_url}/products/demote/${productId}`,
+    {},
+    { withCredentials: true }
+  );
+
+  return response.data;
+};
+
 const productService = {
   getProducts,
   addProductToWishlist,
@@ -126,6 +145,8 @@ const productService = {
   createProduct,
   updateProduct,
   deleteProduct,
+  promoteProduct,
+  demoteProduct,
 };
 
 export default productService;

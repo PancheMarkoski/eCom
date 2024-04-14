@@ -237,7 +237,7 @@ const AdminLayout = () => {
         >
           <ToastContainer
             position="top-right"
-            autoClose={250}
+            autoClose={2500}
             hideProgressBar={false}
             newestOnTop={true}
             closeOnClick

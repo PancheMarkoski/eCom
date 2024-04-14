@@ -15,12 +15,7 @@ import {
   uploadImages,
   deleteImage,
 } from "../../features/cloudinaryImage/cloudinaryImageSlice";
-// import {
-//   createProducts,
-//   resetState,
-//   getProduct,
-//   updateProduct,
-// } from "../features/products/productSlice";
+
 import {
   createProduct,
   updateProduct,

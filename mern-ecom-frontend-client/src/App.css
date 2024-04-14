@@ -196,6 +196,7 @@ div .footer-top-data {
   margin: 0 0 12px;
   letter-spacing: 0.3px;
   text-transform: uppercase;
+  background: linear-gradient(45deg, #fafafa, transparent);
 }
 .main-banner-content h5 {
   font-size: 42px;
@@ -203,6 +204,7 @@ div .footer-top-data {
   letter-spacing: -2px;
   font-weight: 500;
   text-transform: none;
+  background: linear-gradient(45deg, #fce4f4, #fce4f457);
 }
 
 .main-banner-content p {
@@ -210,11 +212,18 @@ div .footer-top-data {
   line-height: 28px;
   letter-spacing: 0.4;
   color: var(--color-131921);
+  background: linear-gradient(45deg, #fafafa, transparent);
+}
+
+.main-banner img {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
 }
 
 .small-banner-content {
-  top: 25%;
-  left: 10%;
+  top: 20%;
+  left: 2%;
 }
 .small-banner-content h4 {
   font-size: 14px;
@@ -224,6 +233,7 @@ div .footer-top-data {
   margin: 0 0 12px;
   letter-spacing: 0.3px;
   text-transform: uppercase;
+  background: linear-gradient(45deg, #fafafa, transparent);
 }
 .small-banner-content h5 {
   font-size: 22px;
@@ -231,6 +241,7 @@ div .footer-top-data {
   letter-spacing: -2px;
   font-weight: 500;
   text-transform: none;
+  background: linear-gradient(45deg, #fce4f4, #fce4f457);
 }
 
 .small-banner-content p {
@@ -238,11 +249,27 @@ div .footer-top-data {
   line-height: 22px;
   letter-spacing: 0.4;
   color: var(--color-131921);
+  background: linear-gradient(45deg, #fafafa, transparent);
 }
 
 .small-banner {
   width: 49%;
+  height: 200px; /* Fixed height for the banner */
+  display: flex; /* Using Flexbox */
+  justify-content: center; /* Center content horizontally */
+  align-items: center; /* Center content vertically */
+  overflow: hidden; /* Hide overflow */
+  border-radius: 5px;
 }
+
+.small-banner img {
+  flex-shrink: 0; /* Prevents the image from shrinking */
+  min-width: 100%; /* Ensures image covers the full width */
+  min-height: 100%; /* Ensures image covers the full height */
+  object-fit: cover; /* Cover the container without distorting the aspect ratio */
+  object-position: center; /* Center the image */
+}
+
 @media (max-width: 547px) {
   .small-banner {
     width: auto;
@@ -1107,3 +1134,14 @@ div .footer-top-data {
 }
 
 /* Single Product Ends Here */
+
+/* Admin Product List */
+
+.product-list-tags {
+  font-size: 16px;
+  padding: 10px;
+}
+.anticon svg {
+  font-size: 16px;
+}
+/* Admin Product List Ends HEre*/

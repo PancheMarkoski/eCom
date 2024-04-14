@@ -9,6 +9,7 @@ import productCategoriesReducer from "../features/productCategories/prodCategori
 import brandsReducer from "../features/barnds/brandsSlice";
 import colorReducer from "../features/color/colorSlice";
 import cloudinaryImageReducer from "../features/cloudinaryImage/cloudinaryImageSlice";
+import promotedProductsReducer from "../features/promotedProducts/promotedProductsSlice";
 
 export const store = configureStore({
   reducer: {
@@ -21,6 +22,7 @@ export const store = configureStore({
     productCategories: productCategoriesReducer,
     brands: brandsReducer,
     colors: colorReducer,
+    promotedProducts: promotedProductsReducer,
     cloudinaryImages: cloudinaryImageReducer,
   },
 });
