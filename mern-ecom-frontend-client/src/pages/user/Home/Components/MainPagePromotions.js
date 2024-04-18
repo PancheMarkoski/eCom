@@ -12,8 +12,6 @@ const MainPagePromotions = () => {
     (product) => product.promoType === "main"
   );
 
-  console.log("mainPromotedProducts", mainPromotedProducts);
-
   return (
     <Container>
       <Row>

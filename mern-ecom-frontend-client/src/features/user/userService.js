@@ -11,6 +11,9 @@ const userRegister = async (user) => {
       return response.data;
     }
   } catch (error) {
+    console.log("ERROR", error);
+    console.log("ERROR", error.message);
+
     throw new Error(error);
   }
 };

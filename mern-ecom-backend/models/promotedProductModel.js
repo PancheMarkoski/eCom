@@ -20,6 +20,11 @@ const promotedProductSchema = new mongoose.Schema(
       required: true,
       enum: ["main", "famous"], // Restricts the promo type to either 'main' or 'famous'
     },
+    theme: {
+      type: String,
+      enum: ["dark", "light"], // Only allow 'dark' or 'light' themes
+      default: "dark", // Default to 'dark' if not specified
+    },
   },
   { timestamps: true }
 );

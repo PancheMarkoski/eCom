@@ -180,7 +180,6 @@ const Profile = () => {
                   {formik.errors.password}
                 </Form.Control.Feedback>
               </Form.Group>
-              {/* Repeat for lastName, email, and mobile with respective changes */}
 
               <Button
                 variant="primary"

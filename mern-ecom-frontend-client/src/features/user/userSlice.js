@@ -26,6 +26,7 @@ export const userRegister = createAsyncThunk(
     }
   }
 );
+
 export const updateUser = createAsyncThunk(
   "auth/update-user",
   async (updateUserData, thunkAPI) => {
@@ -171,7 +172,6 @@ const userSlice = createSlice({
         state.user = null;
         state.isSuccess = false;
         state.message = "Logged out successfully";
-        //  localStorage is cleared
         localStorage.removeItem("user");
       })
       .addCase(userLogout.rejected, (state, action) => {

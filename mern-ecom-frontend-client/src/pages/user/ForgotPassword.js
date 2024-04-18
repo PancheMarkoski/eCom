@@ -33,8 +33,11 @@ const ForgotPassword = () => {
           );
         })
         .catch((error) => {
-          console.log({ error });
-          toast.error("An error occurred ");
+          toast.error(
+            error?.response?.data?.message
+              ? error?.response?.data?.message
+              : "An error occurred "
+          );
         })
         .finally(() => {
           formik.resetForm();

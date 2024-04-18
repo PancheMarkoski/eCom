@@ -29,7 +29,6 @@ router
   .route("/profile")
   .get(protect, getUserProfile)
   .put(protect, updateUserProfile);
-// Additional Controllers Related To User
 router
   .route("/wishlist")
   .get(protect, getWishlist)
@@ -39,6 +38,7 @@ router
   .delete(protect, admin, deleteUser)
   .get(protect, admin, getUserById)
   .put(protect, admin, updateUser);
+
 router.route("/forgot-password").post(forgotPassword);
 router.route("/reset-password/:token").put(resetPassword);
 

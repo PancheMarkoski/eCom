@@ -43,11 +43,22 @@ const demoteProduct = async (productId) => {
   return response.data;
 };
 
+// Update theme of a promoted product
+const updatePromotedProductTheme = async (promotedProductId, theme) => {
+  const response = await axios.put(
+    `${base_url}/promote/theme/${promotedProductId}`,
+    { theme },
+    { withCredentials: true }
+  );
+  return response.data;
+};
+
 const promotedProductService = {
   getPromotedProducts,
   promoteProduct,
   updatePromotedProduct,
   demoteProduct,
+  updatePromotedProductTheme,
 };
 
 export default promotedProductService;

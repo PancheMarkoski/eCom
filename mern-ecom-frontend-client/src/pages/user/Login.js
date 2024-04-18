@@ -44,7 +44,6 @@ const Login = () => {
           } else {
             toast.error("Login failed. Please try again.");
           }
-          console.error("Login failed:", error);
         });
     },
   });

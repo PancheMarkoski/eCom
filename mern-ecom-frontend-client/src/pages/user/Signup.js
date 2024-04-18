@@ -41,8 +41,7 @@ const Signup = () => {
           navigate("/");
         })
         .catch((error) => {
-          console.error("Registration failed:", error);
-          toast.error(error.message);
+          toast.error(error.message || "Registration failed");
         });
     },
   });

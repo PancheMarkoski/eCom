@@ -24,14 +24,24 @@ const Home = () => {
     dispatch(getPromotedProducts());
   }, []);
 
-  const products = useSelector((state) => state.products.products);
+  const { products, promotedProducts, isAdmin } = useSelector((state) => ({
+    promotedProducts: state?.promotedProducts?.promotedProducts,
+    products: state.products.products,
+    isAdmin: state?.user?.user?.role === "admin",
+  }));
 
   const specialProducts =
     products && products?.filter((product) => product.tags.includes("special"));
+
   const featuredProducts =
     products && products.filter((product) => product.tags.includes("featured"));
+
   const popularProducts =
     products && products.filter((product) => product.tags.includes("popular"));
+
+  const famousProducts = promotedProducts.filter(
+    (product) => product.promoType === "famous"
+  );
 
   const brands = [
     { name: "Brand 1", image: "images/brand-01.png" },
@@ -191,34 +201,9 @@ const Home = () => {
               </div>
             </div>
           </div> */}
-          <FamousCard
-            imgSrc="images/fameous-01.webp"
-            title="Big Screen"
-            subtitle="Smart Watch Series 7"
-            details="From $399 or $16.62/mo. for 24 mo.*"
-            theme="light" // Or omit the theme prop for default styling
-          />
-          <FamousCard
-            imgSrc="images/famous-05.png"
-            title="Big Screen"
-            subtitle="Smart Watch Series 7"
-            details="From $399 or $16.62/mo. for 24 mo.*"
-            theme="dark"
-          />
-          <FamousCard
-            imgSrc="images/fameous-01.webp"
-            title="Big Screen"
-            subtitle="Smart Watch Series 7"
-            details="From $399 or $16.62/mo. for 24 mo.*"
-            theme="light" // Or omit the theme prop for default styling
-          />
-          <FamousCard
-            imgSrc="images/samsung-serif-tv.webp"
-            title="Big Screen"
-            subtitle="Smart Watch Series 7"
-            details="From $399 or $16.62/mo. for 24 mo.*"
-            theme="dark"
-          />
+          {famousProducts.map((product) => (
+            <FamousCard key={product._id} product={product} isAdmin={isAdmin} />
+          ))}
         </div>
       </Container>
 

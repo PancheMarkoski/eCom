@@ -57,6 +57,21 @@ export const demoteProduct = createAsyncThunk(
   }
 );
 
+// Async thunk for updating a promoted product's theme
+export const updatePromotedProductTheme = createAsyncThunk(
+  "promotedProducts/updateTheme",
+  async ({ promotedProductId, theme }, thunkAPI) => {
+    try {
+      return await promotedProductService.updatePromotedProductTheme(
+        promotedProductId,
+        theme
+      );
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error.response.data);
+    }
+  }
+);
+
 export const promotedProductSlice = createSlice({
   name: "promotedProduct",
   initialState,
@@ -133,6 +148,24 @@ export const promotedProductSlice = createSlice({
         );
       })
       .addCase(demoteProduct.rejected, (state, action) => {
+        state.isLoading = false;
+        state.isError = true;
+        state.message = action.payload;
+      })
+      .addCase(updatePromotedProductTheme.pending, (state) => {
+        state.isLoading = true;
+      })
+      .addCase(updatePromotedProductTheme.fulfilled, (state, action) => {
+        state.isLoading = false;
+        state.isSuccess = true;
+        const index = state.promotedProducts.findIndex(
+          (product) => product._id === action.payload._id
+        );
+        if (index !== -1) {
+          state.promotedProducts[index] = action.payload; // Update the theme of the product
+        }
+      })
+      .addCase(updatePromotedProductTheme.rejected, (state, action) => {
         state.isLoading = false;
         state.isError = true;
         state.message = action.payload;

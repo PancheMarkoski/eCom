@@ -125,9 +125,38 @@ const updatePromotedProduct = asyncHandler(async (req, res) => {
   res.status(200).json(updatedPromotedProduct);
 });
 
+// @desc    Update theme for a promoted product
+// @route   PUT /api/promote/theme/:id
+// @access  Private/Admin
+const updatePromotedProductTheme = asyncHandler(async (req, res) => {
+  const { theme } = req.body; // Get the new theme from request body
+  const productId = req.params.id; // Get the product id from the URL parameter
+
+  // Validate the incoming theme value
+  if (!["dark", "light"].includes(theme)) {
+    res.status(400);
+    throw new Error("Invalid theme value. Must be 'dark' or 'light'.");
+  }
+
+  // Find the promoted product by ID, update its theme, and return the updated document
+  const promotedProduct = await PromotedProduct.findByIdAndUpdate(
+    productId,
+    { theme: theme },
+    { new: true, runValidators: true }
+  ).populate("product");
+
+  if (!promotedProduct) {
+    res.status(404).send("Promoted product not found");
+    return;
+  }
+
+  res.status(200).json(promotedProduct);
+});
+
 export {
   getPromotedProducts,
   promoteProduct,
   demoteProduct,
   updatePromotedProduct,
+  updatePromotedProductTheme,
 };

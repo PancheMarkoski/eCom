@@ -49,11 +49,6 @@ function App() {
             <Route path="product/:id" element={<SingleProduct />} />
             <Route path="contact" element={<Contact />} />
 
-            {/* <Route path="about" element={<About />} />
-            <Route path="blogs" element={<Blogs />} />
-            <Route path="blog/:id" element={<SingleBlog />} />
-            */}
-            {/*  */}
             <Route
               path="login"
               element={
@@ -77,6 +72,7 @@ function App() {
             <Route path="refund-policy" element={<RefundPolicy />} />
             <Route path="shipping-policy" element={<ShippingPolicy />} />
             <Route path="term-conditions" element={<TermAndConditions />} />
+
             <Route path="" element={<PrivateRoutes />}>
               <Route path="wishlist" element={<Wishlist />} />
               <Route path="/profile" element={<Profile />} />
@@ -86,6 +82,7 @@ function App() {
               <Route path="/my-orders" element={<MyOrders />} />
             </Route>
           </Route>
+
           <Route path="" element={<AdminRoutes />}>
             <Route path="/dashboard" element={<AdminLayout />}>
               <Route index element={<Dashboard />} />
