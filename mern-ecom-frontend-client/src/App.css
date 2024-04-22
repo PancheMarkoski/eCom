@@ -277,6 +277,12 @@ div .footer-top-data {
   }
 }
 
+.small-banner-content-LinkContainer:hover {
+  font-size: 28px; /* Increase the font size on hover */
+  transition: font-size 0.3s ease; /* Smooth transition for the font size change */
+  cursor: pointer;
+}
+
 /* home wrapper 2 */
 .home-wrapper-2 {
   background-color: var(--color-f5f5f7);
@@ -510,6 +516,15 @@ div .footer-top-data {
   display: flex;
   justify-content: center;
   align-items: center;
+  transition: transform 300ms ease-out, box-shadow 300ms ease-out; /* Smooth transition for transform and shadow */
+  cursor: pointer; /* Visual cue that the card is interactive */
+  border-radius: 10px;
+}
+
+/* Scaling up the card on hover */
+.famous-card:hover {
+  transform: scale(1.05); /* Scales up the card by 5% */
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Optional: Adds shadow for better visual effect */
 }
 
 .famous-card .famous-content {

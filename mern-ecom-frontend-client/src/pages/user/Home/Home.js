@@ -43,6 +43,10 @@ const Home = () => {
     (product) => product.promoType === "famous"
   );
 
+  const mainPromotedProducts = promotedProducts.filter(
+    (product) => product.promoType === "main"
+  );
+
   const brands = [
     { name: "Brand 1", image: "images/brand-01.png" },
     { name: "Brand 2", image: "images/brand-02.png" },
@@ -57,7 +61,7 @@ const Home = () => {
   return (
     <>
       <Container class1={"home-wrapper-1 py-5"}>
-        <MainPagePromotions />
+        <MainPagePromotions mainPromotedProducts={mainPromotedProducts} />
       </Container>
 
       <Container class1={"home-wrapper-2 py-5"}>
@@ -145,62 +149,6 @@ const Home = () => {
 
       <Container class1={"famous-wrapper py-5 home-wrapper-2"}>
         <div className="row">
-          {/* <div className="col-3">
-            <div className="famous-card position-relative">
-              <img
-                src="images/fameous-01.webp"
-                alt="Smart Watch Series 7"
-                className="img-fluid"
-              />
-              <div className="famous-content position-absolute">
-                <h5>Big Screen</h5>
-                <h6>Smart Watch Series 7</h6>
-                <p>From $399 or $16.62/mo. for 24 mo.*</p>
-              </div>
-            </div>
-          </div>
-          <div className="col-3">
-            <div className="famous-card position-relative">
-              <img
-                src="images/famous-05.png"
-                alt="Smart Watch Series 7"
-                className="img-fluid"
-              />
-              <div className="famous-content position-absolute">
-                <h5 className="text-dark">Big Screen</h5>
-                <h6 className="text-dark">Smart Watch Series 7</h6>
-                <p className="text-dark">From $399 or $16.62/mo. for 24 mo.*</p>
-              </div>
-            </div>
-          </div>
-          <div className="col-3">
-            <div className="famous-card position-relative">
-              <img
-                src="images/famous-05.png"
-                alt="Smart Watch Series 7"
-                className="img-fluid"
-              />
-              <div className="famous-content position-absolute">
-                <h5 className="text-dark">Big Screen</h5>
-                <h6 className="text-dark">Smart Watch Series 7</h6>
-                <p className="text-dark">From $399 or $16.62/mo. for 24 mo.*</p>
-              </div>
-            </div>
-          </div>
-          <div className="col-3">
-            <div className="famous-card position-relative">
-              <img
-                src="images/samsung-serif-tv.webp"
-                alt="Smart Watch Series 7"
-                className="img-fluid"
-              />
-              <div className="famous-content position-absolute">
-                <h5 className="text-dark">Big Screen</h5>
-                <h6 className="text-dark">Smart Watch Series 7</h6>
-                <p className="text-dark">From $399 or $16.62/mo. for 24 mo.*</p>
-              </div>
-            </div>
-          </div> */}
           {famousProducts.map((product) => (
             <FamousCard key={product._id} product={product} isAdmin={isAdmin} />
           ))}

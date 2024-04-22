@@ -37,11 +37,13 @@ import ProductCategoriesList from "./pages/admin/ProductCategorieslist";
 import AddColor from "./pages/admin/AddColor";
 import Colorlist from "./pages/admin/Colorlist";
 import AdminOrders from "./pages/admin/AdminOrders";
+import ScrollToTop from "./components/ScrollToTop";
 
 function App() {
   return (
     <div className="App">
       <BrowserRouter>
+        <ScrollToTop />
         <Routes>
           <Route path="/" element={<Layout />}>
             <Route index element={<Home />} />

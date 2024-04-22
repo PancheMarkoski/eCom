@@ -3,15 +3,7 @@ import { Container, Row, Col, Image } from "react-bootstrap";
 import { LinkContainer } from "react-router-bootstrap";
 import { useSelector } from "react-redux";
 
-const MainPagePromotions = () => {
-  const promotedProducts = useSelector(
-    (state) => state?.promotedProducts?.promotedProducts
-  );
-
-  const mainPromotedProducts = promotedProducts.filter(
-    (product) => product.promoType === "main"
-  );
-
+const MainPagePromotions = ({ mainPromotedProducts }) => {
   return (
     <Container>
       <Row>
@@ -29,7 +21,9 @@ const MainPagePromotions = () => {
                   <h4>Best Sale</h4>
                   <h5>{mainPromotedProducts[0]?.product?.title}</h5>
                   <p>From ${mainPromotedProducts[0]?.product?.price}</p>
-                  <LinkContainer to="/buy-now">
+                  <LinkContainer
+                    to={`/product/${mainPromotedProducts[0]?.product?._id}`}
+                  >
                     <button className="button">BUY NOW</button>
                   </LinkContainer>
                 </div>
@@ -54,7 +48,12 @@ const MainPagePromotions = () => {
                 />
                 <div className="small-banner-content position-absolute">
                   <h4>{product?.promoTag}</h4>
-                  <h5>{product?.product?.title}</h5>
+                  <LinkContainer
+                    className="small-banner-content-LinkContainer"
+                    to={`/product/${product?.product?._id}`}
+                  >
+                    <h5>{product?.product?.title}</h5>
+                  </LinkContainer>
                   <p>From ${product?.product?.price}</p>
                 </div>
               </div>
