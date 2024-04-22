@@ -14,21 +14,32 @@ import ServicesComponent from "./Components/ServicesComponent";
 import FamousCard from "./Components/FamousCard";
 import BrandMarquee from "./Components/BrandMarquee";
 import { getPromotedProducts } from "../../../features/promotedProducts/promotedProductsSlice";
+import Spinner from "../../../components/Spinner";
 
 const Home = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
+    dispatch(getPromotedProducts());
     dispatch(getProducts());
     dispatch(getUserWishlist());
-    dispatch(getPromotedProducts());
   }, []);
 
-  const { products, promotedProducts, isAdmin } = useSelector((state) => ({
+  const {
+    products,
+    promotedProducts,
+    isAdmin,
+    loadingProducts,
+    loadingPromotedProducts,
+  } = useSelector((state) => ({
     promotedProducts: state?.promotedProducts?.promotedProducts,
     products: state.products.products,
     isAdmin: state?.user?.user?.role === "admin",
+    loadingProducts: state.products.isLoading,
+    loadingPromotedProducts: state.promotedProducts.isLoading,
   }));
+
+  console.log({ loadingPromotedProducts });
 
   const specialProducts =
     products && products?.filter((product) => product.tags.includes("special"));
@@ -61,7 +72,11 @@ const Home = () => {
   return (
     <>
       <Container class1={"home-wrapper-1 py-5"}>
-        <MainPagePromotions mainPromotedProducts={mainPromotedProducts} />
+        {loadingPromotedProducts ? (
+          <Spinner />
+        ) : (
+          <MainPagePromotions mainPromotedProducts={mainPromotedProducts} />
+        )}
       </Container>
 
       <Container class1={"home-wrapper-2 py-5"}>
@@ -136,51 +151,69 @@ const Home = () => {
       {/* Need To Be Done !! */}
 
       <Container class1={"featured-wrapper py-5 home-wrapper-2"}>
-        <div className="row">
-          <div className="col-12">
-            <h3 className="section-heading">Featured Collection</h3>
+        {loadingProducts ? (
+          <Spinner />
+        ) : (
+          <div className="row">
+            <div className="col-12">
+              <h3 className="section-heading">Featured Collection</h3>
+            </div>
+            {featuredProducts &&
+              featuredProducts?.map((product) => (
+                <ProductCard key={product._id} data={product} />
+              ))}
           </div>
-          {featuredProducts &&
-            featuredProducts?.map((product) => (
-              <ProductCard key={product._id} data={product} />
-            ))}
-        </div>
+        )}
       </Container>
 
       <Container class1={"famous-wrapper py-5 home-wrapper-2"}>
-        <div className="row">
-          {famousProducts.map((product) => (
-            <FamousCard key={product._id} product={product} isAdmin={isAdmin} />
-          ))}
-        </div>
+        {loadingProducts ? null : (
+          <div className="row">
+            {famousProducts.map((product) => (
+              <FamousCard
+                key={product._id}
+                product={product}
+                isAdmin={isAdmin}
+              />
+            ))}
+          </div>
+        )}
       </Container>
 
       <Container class1={"special-wrapper py-5 home-wrapper-2"}>
-        <div className="row">
-          <div className="col-12">
-            <h3 className="section-heading">Special Products</h3>
-          </div>
-        </div>
-        <div className="row">
-          {specialProducts &&
-            specialProducts?.map((product) => (
-              <SpecialProduct key={product._id} data={product} />
-            ))}
-        </div>
+        {loadingProducts ? null : (
+          <>
+            <div className="row">
+              <div className="col-12">
+                <h3 className="section-heading">Special Products</h3>
+              </div>
+            </div>
+            <div className="row">
+              {specialProducts &&
+                specialProducts?.map((product) => (
+                  <SpecialProduct key={product._id} data={product} />
+                ))}
+            </div>
+          </>
+        )}
       </Container>
 
       <Container class1={"special-wrapper py-5 home-wrapper-2"}>
-        <div className="row">
-          <div className="col-12">
-            <h3 className="section-heading">Our Popular Products</h3>
-          </div>
-        </div>
-        <div className="row">
-          {popularProducts &&
-            popularProducts.map((product) => (
-              <ProductCard key={product._id} data={product} />
-            ))}
-        </div>
+        {loadingProducts ? null : (
+          <>
+            <div className="row">
+              <div className="col-12">
+                <h3 className="section-heading">Our Popular Products</h3>
+              </div>
+            </div>
+            <div className="row">
+              {popularProducts &&
+                popularProducts.map((product) => (
+                  <ProductCard key={product._id} data={product} />
+                ))}
+            </div>
+          </>
+        )}
       </Container>
 
       <div style={{ width: "100%", overflowX: "hidden" }}>
