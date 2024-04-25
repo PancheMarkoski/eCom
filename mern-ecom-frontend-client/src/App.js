@@ -38,6 +38,8 @@ import AddColor from "./pages/admin/AddColor";
 import Colorlist from "./pages/admin/Colorlist";
 import AdminOrders from "./pages/admin/AdminOrders";
 import ScrollToTop from "./components/ScrollToTop";
+import ComingSoon from "./components/ComingSoon";
+import NotFoundPage from "./pages/user/NotFoundPage";
 
 function App() {
   return (
@@ -48,6 +50,8 @@ function App() {
           <Route path="/" element={<Layout />}>
             <Route index element={<Home />} />
             <Route path="product" element={<OurStore />} />
+            {/* <Route path="/blogs" element={<Blogs />} />  need to be done */}
+            <Route path="/blogs" element={<ComingSoon />} />
             <Route path="product/:id" element={<SingleProduct />} />
             <Route path="contact" element={<Contact />} />
 
@@ -78,7 +82,8 @@ function App() {
             <Route path="" element={<PrivateRoutes />}>
               <Route path="wishlist" element={<Wishlist />} />
               <Route path="/profile" element={<Profile />} />
-              <Route path="compare-product" element={<CompareProduct />} />
+              {/* <Route path="compare-product" element={<CompareProduct />} />  Needs to be done*/}
+              <Route path="compare-product" element={<ComingSoon />} />
               <Route path="cart" element={<Cart />} />
               <Route path="checkout" element={<Checkout />} />
               <Route path="/my-orders" element={<MyOrders />} />
@@ -110,6 +115,7 @@ function App() {
               <Route path="admin-orders" element={<AdminOrders />} />
             </Route>
           </Route>
+          <Route path="*" element={<NotFoundPage />} />
         </Routes>
       </BrowserRouter>
     </div>

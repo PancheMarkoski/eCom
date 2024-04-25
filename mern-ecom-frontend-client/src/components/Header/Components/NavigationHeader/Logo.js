@@ -6,7 +6,7 @@ const Logo = () => (
   <Col md={2} xs={6}>
     <h2>
       <Link to="/" className="text-white">
-        Dev Corner
+        Coveted
       </Link>
     </h2>
   </Col>

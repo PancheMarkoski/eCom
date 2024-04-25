@@ -19,27 +19,14 @@ import Spinner from "../../../components/Spinner";
 const Home = () => {
   const dispatch = useDispatch();
 
-  useEffect(() => {
-    dispatch(getPromotedProducts());
-    dispatch(getProducts());
-    dispatch(getUserWishlist());
-  }, []);
-
-  const {
-    products,
-    promotedProducts,
-    isAdmin,
-    loadingProducts,
-    loadingPromotedProducts,
-  } = useSelector((state) => ({
-    promotedProducts: state?.promotedProducts?.promotedProducts,
-    products: state.products.products,
-    isAdmin: state?.user?.user?.role === "admin",
-    loadingProducts: state.products.isLoading,
-    loadingPromotedProducts: state.promotedProducts.isLoading,
-  }));
-
-  console.log({ loadingPromotedProducts });
+  const promotedProducts = useSelector(
+    (state) => state?.promotedProducts?.promotedProducts
+  );
+  const products = useSelector((state) => state.products.products);
+  const isAdmin = useSelector((state) => state?.user?.user?.role === "admin");
+  const loadingPromotedProducts = useSelector(
+    (state) => state.promotedProducts.isLoading
+  );
 
   const specialProducts =
     products && products?.filter((product) => product.tags.includes("special"));
@@ -68,6 +55,12 @@ const Home = () => {
     { name: "Brand 7", image: "images/brand-07.png" },
     { name: "Brand 8", image: "images/brand-08.png" },
   ];
+
+  useEffect(() => {
+    dispatch(getPromotedProducts());
+    dispatch(getProducts());
+    dispatch(getUserWishlist());
+  }, [dispatch, promotedProducts.length, products.length]);
 
   return (
     <>
@@ -151,23 +144,19 @@ const Home = () => {
       {/* Need To Be Done !! */}
 
       <Container class1={"featured-wrapper py-5 home-wrapper-2"}>
-        {loadingProducts ? (
-          <Spinner />
-        ) : (
-          <div className="row">
-            <div className="col-12">
-              <h3 className="section-heading">Featured Collection</h3>
-            </div>
-            {featuredProducts &&
-              featuredProducts?.map((product) => (
-                <ProductCard key={product._id} data={product} />
-              ))}
+        <div className="row">
+          <div className="col-12">
+            <h3 className="section-heading">Featured Collection</h3>
           </div>
-        )}
+          {featuredProducts &&
+            featuredProducts?.map((product) => (
+              <ProductCard key={product._id} data={product} />
+            ))}
+        </div>
       </Container>
 
       <Container class1={"famous-wrapper py-5 home-wrapper-2"}>
-        {loadingProducts ? null : (
+        {
           <div className="row">
             {famousProducts.map((product) => (
               <FamousCard
@@ -177,11 +166,11 @@ const Home = () => {
               />
             ))}
           </div>
-        )}
+        }
       </Container>
 
       <Container class1={"special-wrapper py-5 home-wrapper-2"}>
-        {loadingProducts ? null : (
+        {
           <>
             <div className="row">
               <div className="col-12">
@@ -195,11 +184,11 @@ const Home = () => {
                 ))}
             </div>
           </>
-        )}
+        }
       </Container>
 
       <Container class1={"special-wrapper py-5 home-wrapper-2"}>
-        {loadingProducts ? null : (
+        {
           <>
             <div className="row">
               <div className="col-12">
@@ -213,7 +202,7 @@ const Home = () => {
                 ))}
             </div>
           </>
-        )}
+        }
       </Container>
 
       <div style={{ width: "100%", overflowX: "hidden" }}>

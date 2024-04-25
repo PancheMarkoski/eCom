@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import Meta from "../../components/Meta";
 import BreadCrumb from "../../components/BreadCrumb";
 import { AiOutlineHome, AiOutlineMail } from "react-icons/ai";
@@ -9,6 +9,7 @@ import { useFormik } from "formik";
 import { useDispatch } from "react-redux";
 import { toast } from "react-toastify";
 import { createContact, resetState } from "../../features/contact/contactSlice";
+import Spinner from "../../components/Spinner";
 
 let schema = yup.object().shape({
   name: yup.string().required("Name is Required"),
@@ -19,6 +20,8 @@ let schema = yup.object().shape({
 
 const Contact = () => {
   const dispatch = useDispatch();
+
+  const [mapLoading, setMapLoading] = useState(true);
 
   const formik = useFormik({
     initialValues: {
@@ -56,14 +59,16 @@ const Contact = () => {
       <Container class1="contact-wrapper py-5 home-wrapper-2">
         <div className="row">
           <div className="col-12">
+            {mapLoading && <Spinner />}
             <iframe
-              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2964.8147329508206!2d20.964980875951138!3d42.0042514712282!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x1353f18caa6999df%3A0xd624b3ac92833c54!2z0KLQtdGC0L7QstC-!5e0!3m2!1sen!2smk!4v1707215221510!5m2!1sen!2smk"
+              src="https://www.google.com/maps/embed?pb=!1m18..."
               width="600"
               height="450"
               className="border-0 w-100"
               allowFullScreen=""
               loading="lazy"
               referrerPolicy="no-referrer-when-downgrade"
+              onLoad={() => setMapLoading(false)}
             />
           </div>
           <div className="col-12 mt-5">

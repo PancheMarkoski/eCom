@@ -20,7 +20,7 @@ const PromoHeader = () => {
             <p className="text-end text-white mb-0">
               Hotline:
               <Link to="tel:+918264954234" className="text-white">
-                +91 8264954234
+                +91 070280201
               </Link>
             </p>
           </Col>
