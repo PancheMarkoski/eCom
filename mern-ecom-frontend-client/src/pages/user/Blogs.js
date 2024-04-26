@@ -5,6 +5,7 @@ import BlogCard from "../../components/BlogCard";
 import Container from "../../components/Container";
 import { useDispatch, useSelector } from "react-redux";
 import { getAllBlogs } from "../../features/blog/blogSlice";
+import "../../styles/blogs.css";
 
 const Blog = () => {
   const dispatch = useDispatch();

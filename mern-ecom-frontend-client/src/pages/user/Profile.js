@@ -7,6 +7,7 @@ import { useFormik } from "formik";
 import { useSelector, useDispatch } from "react-redux";
 import { updateUser } from "../../features/user/userSlice";
 import { toast } from "react-toastify";
+import "../../styles/profile.css";
 
 let schema = yup.object().shape({
   firstName: yup.string().required("First Name is Required"),

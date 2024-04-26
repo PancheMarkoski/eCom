@@ -14,6 +14,7 @@ import { stripHtmlTags } from "../../utils/helperFunctions/stripHtmlTags";
 import CartItem from "../../components/CartItem";
 import { calculateCartSubtotal } from "../../utils/helperFunctions/calculateCartSubtotal";
 import { Row, Col, Button } from "react-bootstrap";
+import "../../styles/cart.css";
 
 const Cart = () => {
   const dispatch = useDispatch();

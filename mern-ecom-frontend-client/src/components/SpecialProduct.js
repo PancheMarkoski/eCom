@@ -2,6 +2,7 @@ import React from "react";
 import ReactStars from "react-rating-stars-component";
 import { LinkContainer } from "react-router-bootstrap"; // For wrapping <Link> functionality
 import { Col, Image, ProgressBar, Badge } from "react-bootstrap"; // Import required components
+import "../styles/specialProduct.css";
 
 const SpecialProduct = ({ data }) => {
   return (

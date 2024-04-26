@@ -2,6 +2,8 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { BsLinkedin, BsInstagram, BsGithub, BsYoutube } from "react-icons/bs";
 import newsletter from "../images/newsletter.png";
+import "../styles/footer.css";
+
 const Footer = () => {
   return (
     <>

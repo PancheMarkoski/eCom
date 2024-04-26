@@ -6,6 +6,7 @@ import { useSelector } from "react-redux";
 import { stripHtmlTags } from "../../../utils/helperFunctions/stripHtmlTags";
 import { calculateCartSubtotal } from "../../../utils/helperFunctions/calculateCartSubtotal";
 import CheckoutShippingInfo from "./CheckoutShippingInfo";
+import "../../../styles/shippingPage.css";
 
 const Checkout = () => {
   const cart = useSelector((state) => state.cart.cart);

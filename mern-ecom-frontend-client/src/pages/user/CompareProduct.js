@@ -3,6 +3,8 @@ import Meta from "../../components/Meta";
 import BreadCrumb from "../../components/BreadCrumb";
 import Color from "../../components/Color";
 import Container from "../../components/Container";
+import "../../styles/compareProduct.css";
+
 const CompareProduct = () => {
   return (
     <>

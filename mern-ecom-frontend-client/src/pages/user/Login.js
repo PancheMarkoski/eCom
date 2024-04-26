@@ -8,6 +8,7 @@ import { useFormik } from "formik";
 import { useDispatch } from "react-redux";
 import { userLogin } from "../../features/user/userSlice";
 import { toast } from "react-toastify";
+import "../../styles/auth.css";
 
 const loginSchema = Yup.object().shape({
   email: Yup.string()

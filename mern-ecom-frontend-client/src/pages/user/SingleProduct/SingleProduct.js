@@ -19,6 +19,7 @@ import { addProductToCart, getCart } from "../../../features/cart/cartSlice";
 import { toast } from "react-toastify";
 import CustomerReviews from "./CustomerReviews";
 import { copyToClipboard } from "../../../utils/helperFunctions/copyToClipboard";
+import "../../../styles/mainProduct.css";
 
 const SingleProduct = () => {
   const dispatch = useDispatch();

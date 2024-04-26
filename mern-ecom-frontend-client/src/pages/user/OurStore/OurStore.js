@@ -14,6 +14,7 @@ import OurStoreFilterSection from "./OurStoreFilterSection";
 import RandomProduct from "./RandomProduct";
 import ProductList from "./ProductList";
 import { getColors } from "../../../features/color/colorSlice";
+import "../../../styles/ourStore.css";
 
 const OurStore = () => {
   const dispatch = useDispatch();

@@ -4,6 +4,7 @@ import BreadCrumb from "../../components/BreadCrumb";
 import { getUserOrders } from "../../features/order/orderSlice";
 import { useSelector, useDispatch } from "react-redux";
 import Spinner from "../../components/Spinner";
+import "../../styles/myOrders.css";
 
 const MyOrders = () => {
   const dispatch = useDispatch();

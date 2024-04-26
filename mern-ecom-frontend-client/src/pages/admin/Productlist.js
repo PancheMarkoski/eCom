@@ -18,6 +18,7 @@ import {
   updatePromotedProduct,
 } from "../../features/promotedProducts/promotedProductsSlice";
 import { toast } from "react-toastify";
+import "../../styles/productlist.css";
 
 const columns = [
   {

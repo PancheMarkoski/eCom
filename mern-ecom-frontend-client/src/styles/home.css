@@ -1,0 +1,148 @@
+/* Home Page Start Here */
+
+.main-banner-content {
+  top: 15%;
+  left: 5%;
+}
+.main-banner-content h4 {
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 24px;
+  color: var(--color-bf4800);
+  margin: 0 0 12px;
+  letter-spacing: 0.3px;
+  text-transform: uppercase;
+  background: linear-gradient(45deg, #fafafa, transparent);
+}
+.main-banner-content h5 {
+  font-size: 42px;
+  line-height: 54px;
+  letter-spacing: -2px;
+  font-weight: 500;
+  text-transform: none;
+  background: linear-gradient(45deg, #fce4f4, #fce4f457);
+}
+
+.main-banner-content p {
+  font-size: 18px;
+  line-height: 28px;
+  letter-spacing: 0.4;
+  color: var(--color-131921);
+  background: linear-gradient(45deg, #fafafa, transparent);
+}
+
+.main-banner img {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+}
+
+.small-banner-content {
+  top: 20%;
+  left: 2%;
+}
+.small-banner-content h4 {
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 24px;
+  color: var(--color-bf4800);
+  margin: 0 0 12px;
+  letter-spacing: 0.3px;
+  text-transform: uppercase;
+  background: linear-gradient(45deg, #fafafa, transparent);
+}
+.small-banner-content h5 {
+  font-size: 22px;
+  line-height: 34px;
+  letter-spacing: -2px;
+  font-weight: 500;
+  text-transform: none;
+  background: linear-gradient(45deg, #fce4f4, #fce4f457);
+}
+
+.small-banner-content p {
+  font-size: 14px;
+  line-height: 22px;
+  letter-spacing: 0.4;
+  color: var(--color-131921);
+  background: linear-gradient(45deg, #fafafa, transparent);
+}
+
+.small-banner {
+  width: 49%;
+  height: 200px; /* Fixed height for the banner */
+  display: flex; /* Using Flexbox */
+  justify-content: center; /* Center content horizontally */
+  align-items: center; /* Center content vertically */
+  overflow: hidden; /* Hide overflow */
+  border-radius: 5px;
+}
+
+.small-banner img {
+  flex-shrink: 0; /* Prevents the image from shrinking */
+  min-width: 100%; /* Ensures image covers the full width */
+  min-height: 100%; /* Ensures image covers the full height */
+  object-fit: cover; /* Cover the container without distorting the aspect ratio */
+  object-position: center; /* Center the image */
+}
+
+@media (max-width: 547px) {
+  .small-banner {
+    width: auto;
+    padding: 13px;
+  }
+}
+
+.small-banner-content-LinkContainer:hover {
+  font-size: 28px; /* Increase the font size on hover */
+  transition: font-size 0.3s ease; /* Smooth transition for the font size change */
+  cursor: pointer;
+}
+
+/* home wrapper 2 */
+.home-wrapper-2 {
+  background-color: var(--color-f5f5f7);
+}
+/* home wrapper 2 End Here */
+
+/* categories section */
+.categories {
+  background-color: white;
+  box-shadow: 0 0 10px #0000001a;
+  padding: 15px;
+}
+
+.categories > div {
+  width: 25%;
+  padding: 10px 10px 10px 20px;
+}
+
+.categories > div > div {
+  width: 60%; /* Assuming you meant 100% for the width */
+}
+
+/* Borders for the first four child divs */
+.categories > div:nth-child(1),
+.categories > div:nth-child(2),
+.categories > div:nth-child(3),
+.categories > div:nth-child(4) {
+  border-bottom: 1px solid var(--color-ededed); /* Replace '--color-primary' with your color variable */
+}
+
+/* Right borders for the first three child divs */
+.categories > div:nth-child(1),
+.categories > div:nth-child(2),
+.categories > div:nth-child(3) {
+  border-right: 1px solid var(--color-ededed); /* Replace '--color-secondary' with your color variable */
+}
+
+/* Right borders for the 5th to 7th child divs */
+.categories > div:nth-child(5),
+.categories > div:nth-child(6),
+.categories > div:nth-child(7) {
+  border-right: 1px solid var(--color-ededed); /* Replace '--color-tertiary' with your color variable */
+}
+
+/* categories section ends here */
+
+/* Home Page End Here */

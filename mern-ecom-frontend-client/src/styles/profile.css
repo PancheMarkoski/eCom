@@ -1,0 +1,18 @@
+/* Profile page start here */
+.profile {
+  margin: 0px auto;
+  max-width: 600px;
+}
+
+.profile .profile-edit {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+.profile,
+.form-group {
+  margin-bottom: 30px;
+}
+
+/* Profile page End here */

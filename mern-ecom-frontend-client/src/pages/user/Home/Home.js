@@ -15,6 +15,7 @@ import FamousCard from "./Components/FamousCard";
 import BrandMarquee from "./Components/BrandMarquee";
 import { getPromotedProducts } from "../../../features/promotedProducts/promotedProductsSlice";
 import Spinner from "../../../components/Spinner";
+import "../../../styles/home.css";
 
 const Home = () => {
   const dispatch = useDispatch();

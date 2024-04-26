@@ -1,0 +1,28 @@
+/* Table page start here */
+
+.custom-table-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 48px 80px;
+  background-color: var(--color-f5f5f7);
+  flex-direction: column;
+}
+.custom-table-container thead th {
+  color: var(--color-febd69);
+}
+
+.custom-table-container table td {
+  /* Add your desired spacing here, for example: */
+  padding: 10px;
+}
+
+@media (max-width: 768px) {
+  .custom-table-container {
+    display: block;
+    padding: 0px;
+    overflow-x: overlay;
+  }
+}
+
+/* Table page ends here */

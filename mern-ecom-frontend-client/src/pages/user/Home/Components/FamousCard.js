@@ -4,6 +4,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { Col, Form, Image, Card } from "react-bootstrap";
 import { updatePromotedProductTheme } from "../../../../features/promotedProducts/promotedProductsSlice";
 import { LinkContainer } from "react-router-bootstrap";
+import "../../../../styles/famousCard.css";
 
 const FamousCard = ({ product, isAdmin }) => {
   const dispatch = useDispatch();

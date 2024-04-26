@@ -13,6 +13,7 @@ import { addProductToWishlist } from "../features/product/productSlice";
 import { useDispatch, useSelector } from "react-redux";
 import { BsBalloonHeart, BsBalloonHeartFill } from "react-icons/bs";
 import { toast } from "react-toastify";
+import "../styles/productCard.css";
 
 const ProductCard = ({ grid, data = {} }) => {
   const dispatch = useDispatch();

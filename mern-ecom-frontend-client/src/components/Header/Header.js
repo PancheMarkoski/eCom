@@ -9,6 +9,7 @@ import MenuHeader from "./Components/MenuHeader";
 import { userLogout } from "../../features/user/userSlice";
 import { toast } from "react-toastify";
 import { clearCart } from "../../features/cart/cartSlice";
+import "../../styles/header.css";
 
 const Header = () => {
   const dispatch = useDispatch();

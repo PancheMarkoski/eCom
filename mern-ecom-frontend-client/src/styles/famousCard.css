@@ -1,0 +1,63 @@
+/* Famous  Card */
+
+.famous-card {
+  height: 460px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: transform 300ms ease-out, box-shadow 300ms ease-out; /* Smooth transition for transform and shadow */
+  cursor: pointer; /* Visual cue that the card is interactive */
+  border-radius: 10px;
+}
+
+/* Scaling up the card on hover */
+.famous-card:hover {
+  transform: scale(1.05); /* Scales up the card by 5% */
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Optional: Adds shadow for better visual effect */
+}
+
+.famous-card .famous-content {
+  top: 10%;
+  left: 10%;
+}
+
+.famous-card::before {
+  content: "";
+  display: block;
+  width: 100%;
+  padding-top: 75%;
+}
+
+.famous-card img {
+  border-radius: 10px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.famous-content h5 {
+  font-size: 13px;
+  line-height: 20px;
+  font-weight: 400;
+  color: white;
+  margin-bottom: 7px;
+}
+
+.famous-content h6 {
+  font-size: 24px;
+  line-height: 38px;
+  font-weight: 500;
+  color: white;
+}
+
+.famous-content p {
+  font-size: 16px;
+  line-height: 24px;
+  font-weight: 100; /* Ensure that the font supports this weight */
+  color: white;
+}
+
+/* Famous  Card ends here */

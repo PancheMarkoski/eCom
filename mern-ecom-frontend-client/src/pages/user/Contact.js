@@ -10,6 +10,7 @@ import { useDispatch } from "react-redux";
 import { toast } from "react-toastify";
 import { createContact, resetState } from "../../features/contact/contactSlice";
 import Spinner from "../../components/Spinner";
+import "../../styles/contact.css";
 
 let schema = yup.object().shape({
   name: yup.string().required("Name is Required"),
@@ -61,7 +62,7 @@ const Contact = () => {
           <div className="col-12">
             {mapLoading && <Spinner />}
             <iframe
-              src="https://www.google.com/maps/embed?pb=!1m18..."
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d23717.262206320174!2d20.948331267654062!3d42.0076196085468!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x1353f0e82a50e8db%3A0x5587e34b46cad34c!2sTetovo%2C%20North%20Macedonia!5e0!3m2!1sen!2sus!4v1714153612978!5m2!1sen!2sus"
               width="600"
               height="450"
               className="border-0 w-100"

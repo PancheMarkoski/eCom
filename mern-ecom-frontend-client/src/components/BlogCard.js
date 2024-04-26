@@ -1,6 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { stripHtmlTags } from "../utils/helperFunctions/stripHtmlTags";
+import "../styles/blogCard.css";
 
 const BlogCard = ({ data }) => {
   const createdAtDate = new Date(data?.createdAt);

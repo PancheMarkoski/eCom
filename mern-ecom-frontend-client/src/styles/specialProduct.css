@@ -1,0 +1,72 @@
+/* Special Product  */
+.special-product-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  padding: 20px 30px;
+  border-radius: 10px;
+  background-color: white;
+}
+
+.special-product-card .special-product-card__badge {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background-color: #ffc107;
+  color: black;
+}
+
+/* Add this CSS to your stylesheet */
+.special-product-image {
+  max-width: 100%; /* Makes image responsive */
+  height: auto; /* Maintain aspect ratio */
+  /* Set an initial size */
+  width: 200px; /* Example initial width, adjust as needed */
+}
+
+@media (max-width: 768px) {
+  /* Adjust for tablets */
+  .special-product-content {
+    font-size: 0.9rem; /* Adjust font size */
+  }
+  .special-product-content .prod-count {
+    font-size: 0.9rem; /* Adjust font size */
+  }
+
+  .special-product-content .price,
+  .special-product-content .prod-count {
+    flex-direction: column; /* Stack price and product count vertically */
+    gap: 0.5rem;
+  }
+}
+
+.special-product-card__badge {
+  width: 25px;
+  height: 25px;
+  border-radius: 50%;
+  background-color: #ffc107;
+  color: black;
+}
+
+@media (max-width: 480px) {
+  /* Adjust for mobile phones */
+  .special-product-content {
+    font-size: 0.8rem; /* Further reduce font size */
+  }
+  .special-product-content h5,
+  .special-product-content h6 {
+    font-size: 1em; /* Adjust heading sizes */
+  }
+  .special-product-content .discount-till,
+  .special-product-content .prod-count {
+    flex-direction: column; /* Ensure vertical stacking for smaller elements */
+    gap: 0.5rem;
+  }
+
+  .special-product-card__badge {
+    width: 20px;
+    height: 20px;
+  }
+}
+
+/* Special Product Card ends here */
