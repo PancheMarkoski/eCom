@@ -74,7 +74,6 @@ const getProducts = asyncHandler(async (req, res) => {
     const productCount = await Product.countDocuments();
     if (skip >= productCount) throw new Error("This page does not exists");
   }
-  // console.log(page, limit, skip);
 
   const product = await query;
 
@@ -153,6 +152,7 @@ const rateProduct = asyncHandler(async (req, res) => {
 
   // Calculate Total Rating
   const getallratings = await Product.findById(prodId);
+
   let totalRating = getallratings.ratings.length;
   let ratingsum = getallratings.ratings
     .map((item) => item.star)

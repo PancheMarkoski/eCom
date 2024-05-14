@@ -71,7 +71,6 @@ export const createProduct = createAsyncThunk(
   async (data, thunkAPI) => {
     try {
       const response = await productService.createProduct(data);
-      // thunkAPI.dispatch(getProductById(rateProductData.prodId));
       return response;
     } catch (error) {
       toast.error(error);

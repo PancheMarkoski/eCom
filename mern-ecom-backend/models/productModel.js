@@ -52,10 +52,6 @@ var productSchema = new mongoose.Schema(
       type: String,
       default: 0,
     },
-    isPromoted: {
-      type: Boolean,
-      default: false,
-    },
   },
   { timestamps: true }
 );

@@ -21,7 +21,6 @@ const AddProductCategory = () => {
   const navigate = useNavigate();
   const location = useLocation();
   const getProductCategoryId = location.pathname.split("/")[3];
-
   const [initialValues, setInitialValues] = useState({ title: "" });
 
   useEffect(() => {
@@ -60,7 +59,9 @@ const AddProductCategory = () => {
         })
         .catch((error) => {
           // Handle error, e.g., show an error toast
-          toast.error("An error occurred");
+          toast.error(
+            error ? error : "An error occurred while processing your request."
+          );
         })
         .finally(() => {
           // Reset the product state after the product creation attempt
@@ -78,8 +79,9 @@ const AddProductCategory = () => {
           ? "Edit Product Category"
           : "Add Product Category"}
       </h3>
+
       <div>
-        <form action="" onSubmit={formik.handleSubmit}>
+        <form onSubmit={formik.handleSubmit}>
           <CustomInput
             type="text"
             label="Enter Product Category"
@@ -88,9 +90,11 @@ const AddProductCategory = () => {
             onBlr={formik.handleBlur("title")}
             val={formik.values.title}
           />
+
           <div className="error">
             {formik.touched.title && formik.errors.title}
-          </div>{" "}
+          </div>
+
           <button
             className="btn btn-success border-0 rounded-3 my-5"
             type="submit"

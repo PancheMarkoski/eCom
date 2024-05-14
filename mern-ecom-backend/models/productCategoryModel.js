@@ -1,13 +1,14 @@
 import mongoose from "mongoose";
 
 // Declare the Schema of the Mongo model
-var ProductCategorySchema = new mongoose.Schema(
+const ProductCategorySchema = new mongoose.Schema(
   {
     title: {
       type: String,
       required: true,
       unique: true,
       index: true,
+      trim: true,
     },
   },
   {

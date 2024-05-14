@@ -32,7 +32,12 @@ const createProductCategory = async (data) => {
       return response.data;
     }
   } catch (error) {
-    throw error;
+    const message =
+      error.response && error.response.data.message
+        ? error.response.data.message
+        : "An unknown error occurred";
+
+    throw new Error(message);
   }
 };
 

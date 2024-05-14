@@ -46,7 +46,7 @@ export const createProductCategory = createAsyncThunk(
       );
       return response;
     } catch (error) {
-      return thunkAPI.rejectWithValue(error);
+      return thunkAPI.rejectWithValue(error.message);
     }
   }
 );
@@ -156,7 +156,7 @@ const prodCategories = createSlice({
         state.isSuccess = true;
         state.deleteProductCategory = action.payload;
         state.productCategories = state.productCategories.filter(
-          (brand) => brand._id !== action.meta.arg
+          (category) => category._id !== action.meta.arg
         );
         state.message = "success";
       })
