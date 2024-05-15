@@ -34,18 +34,26 @@ const columns = [
   },
 ];
 
+const OrderStatusSelect = ({ status, onChange }) => (
+  <select
+    onChange={onChange}
+    value={status}
+    className="form-control form-select"
+  >
+    <option value="Not Processed">Not Processed</option>
+    <option value="Cash on Delivery">Cash on Delivery</option>
+    <option value="Dispatched">Dispatched</option>
+    <option value="Cancelled">Cancelled</option>
+    <option value="Delivered">Delivered</option>
+  </select>
+);
+
 const AdminOrders = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
     dispatch(getOrders());
   }, [dispatch]);
-
-  const handleStatusChange = (status, orderId) => {
-    const data = { orderId, status };
-
-    dispatch(updateOrderStatus(data));
-  };
 
   const orderState = useSelector((state) => state?.order?.orders || []);
 
@@ -59,17 +67,17 @@ const AdminOrders = () => {
           amount: order?.totalPrice,
           date: new Date(order?.createdAt).toLocaleString(),
           status: (
-            <select
-              onChange={(e) => handleStatusChange(e.target.value, order._id)}
-              value={order?.orderStatus}
-              className="form-control form-select"
-            >
-              <option value="Not Processed">Not Processed</option>
-              <option value="Cash on Delivery">Cash on Delivery</option>
-              <option value="Dispatched">Dispatched</option>
-              <option value="Cancelled">Cancelled</option>
-              <option value="Delivered">Delivered</option>
-            </select>
+            <OrderStatusSelect
+              status={order.orderStatus}
+              onChange={(e) =>
+                dispatch(
+                  updateOrderStatus({
+                    orderId: order._id,
+                    status: e.target.value,
+                  })
+                )
+              }
+            />
           ),
         }))
       : [];

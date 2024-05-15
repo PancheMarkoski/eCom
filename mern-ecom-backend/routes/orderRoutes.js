@@ -14,7 +14,7 @@ router
   .route("/")
   .get(protect, admin, getOrders) // Get the current user's cart
   .post(protect, createOrder) // Add an item to the cart
-  .put(protect, updateOrderStatus);
+  .put(protect, admin, updateOrderStatus);
 
 router.route("/myorders").get(protect, getUserOrder);
 
