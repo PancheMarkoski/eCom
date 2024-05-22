@@ -180,7 +180,10 @@ const SingleProduct = () => {
                         className="form-control"
                         style={{ width: "70px" }}
                         id=""
-                        onChange={(e) => setQuantity(e.target.value)}
+                        step={1}
+                        onChange={(e) =>
+                          setQuantity(parseInt(e.target.value, 10))
+                        }
                         value={quantity}
                       />
                     </div>

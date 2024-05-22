@@ -47,7 +47,7 @@ const Cart = () => {
                   <h3>Your cart is currently empty.</h3>
                   <Link to="/product">
                     <Button variant="light" className="mt-3">
-                      <Link to="/product">Start Shopping</Link>
+                      Start Shopping
                     </Button>
                   </Link>
                 </Col>
