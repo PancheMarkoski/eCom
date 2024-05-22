@@ -72,7 +72,7 @@ const Addcolor = () => {
     <div>
       <h3 className="mb-4 title">{getColorId ? "Edit Color" : "Add Color"}</h3>
       <div>
-        <form action="" onSubmit={formik.handleSubmit}>
+        <form onSubmit={formik.handleSubmit}>
           <CustomInput
             type="color"
             label="Enter Product Color"

@@ -6,7 +6,7 @@ import asyncHandler from "../middleware/asyncHandler.js";
 // @access  Private/Admin
 const createColor = asyncHandler(async (req, res) => {
   const newColor = await Color.create(req.body);
-  res.json(newColor);
+  res.status(201).json(newColor);
 });
 
 // @desc    Update an existing color
@@ -17,6 +17,12 @@ const updateColor = asyncHandler(async (req, res) => {
   const updatedColor = await Color.findByIdAndUpdate(id, req.body, {
     new: true,
   });
+
+  if (!updatedColor) {
+    res.status(404);
+    throw new Error("Color not found");
+  }
+
   res.json(updatedColor);
 });
 

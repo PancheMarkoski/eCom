@@ -6,6 +6,7 @@ import { BiEdit } from "react-icons/bi";
 import { AiFillDelete } from "react-icons/ai";
 import { Link } from "react-router-dom";
 import CustomModal from "../../components/Admin/CustomModal";
+import { Badge } from "react-bootstrap";
 
 const columns = [
   {
@@ -37,7 +38,7 @@ const Colorlist = () => {
 
   useEffect(() => {
     dispatch(getColors());
-  }, []);
+  }, [dispatch]);
   const colorState = useSelector((state) => state.colors.colors);
 
   const colorData = useMemo(
@@ -45,7 +46,19 @@ const Colorlist = () => {
       colorState.map((color, i) => ({
         key: color._id,
         id: i + 1,
-        name: color.title,
+        name: (
+          <div
+            style={{
+              backgroundColor: color.title,
+              borderRadius: "8px",
+              padding: "5px",
+              display: "inline-block",
+              color: "#fff",
+            }}
+          >
+            {color.title}
+          </div>
+        ),
         action: (
           <>
             <Link
