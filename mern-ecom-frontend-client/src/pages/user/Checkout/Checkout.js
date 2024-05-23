@@ -19,8 +19,8 @@ const Checkout = () => {
     price: product?.price,
   }));
 
-  const totalPrice = subTotal;
-  const priceAfterDiscount = subTotal;
+  const totalPrice = subTotal.toFixed(2);
+  const priceAfterDiscount = subTotal.toFixed(2);
 
   return (
     <>
@@ -63,9 +63,7 @@ const Checkout = () => {
                         </div>
                       </div>
                       <div className="flex-grow-1">
-                        <h5 className="total">
-                          ${product?.price * product?.quantity}
-                        </h5>
+                        <h5 className="total">${totalPrice}</h5>
                       </div>
                     </div>
                   );
@@ -75,7 +73,7 @@ const Checkout = () => {
               <div className="border-bottom py-4">
                 <div className="d-flex justify-content-between align-items-center">
                   <p className="total">Subtotal</p>
-                  <p className="total-price">${subTotal}</p>
+                  <p className="total-price">${subTotal.toFixed(2)}</p>
                 </div>
                 <div className="d-flex justify-content-between align-items-center">
                   <p className="mb-0 total">Shipping price</p>
@@ -84,7 +82,7 @@ const Checkout = () => {
               </div>
               <div className="d-flex justify-content-between align-items-center border-bottom py-4">
                 <h4 className="total">Total</h4>
-                <h5 className="total-price">${subTotal}</h5>
+                <h5 className="total-price">${subTotal.toFixed(2)}</h5>
               </div>
             </div>
           </div>

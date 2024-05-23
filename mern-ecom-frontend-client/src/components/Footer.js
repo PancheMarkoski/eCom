@@ -40,15 +40,16 @@ const Footer = () => {
               <h4 className="text-white mb-4">Contact Us</h4>
               <div>
                 <address className="text-white fs-6">
-                  277 Near Vill Chopal, <br /> Sonipat, Haryana <br /> Pincode:
-                  131103
+                  89 JNA, <br /> Macedonia, Tetovo <br /> Pincode: 1200
                 </address>
-                <p className="d-block mb-2 text-white">Phone: +91 8264954234</p>
+                <p className="d-block mb-2 text-white">
+                  Phone: +389 070-280-201
+                </p>
                 <Link
-                  href="mailto:navdeepdahiya753@gmail.com"
+                  href="mailto:panchemarkoski@gmail.com"
                   className="d-block mb-2 text-white"
                 >
-                  navdeepdahiya753@gmail.com
+                  panchemarkoski@gmail.com
                 </Link>
                 <div className="social_icons d-flex align-items-center gap-30 mt-4 d-flex justify-content-center">
                   <Link
@@ -148,7 +149,7 @@ const Footer = () => {
           <div className="row">
             <div className="col-12">
               <p className="text-center mb-0 text-white">
-                &copy; {new Date().getFullYear()}; Powered by Developer's Corner
+                &copy; {new Date().getFullYear()} Powered by Coveted
               </p>
             </div>
           </div>

@@ -78,7 +78,7 @@ const CheckoutShippingInfo = ({
 
   return (
     <div className="checkout-left-data">
-      <h3 className="website-name">Dev Corner</h3>
+      <h3 className="website-name">Coveted</h3>
       <nav style={{ "--bs-breadcrumb-divider": "'>'" }} aria-label="breadcrumb">
         <ol className="breadcrumb">
           <li className="breadcrumb-item">
@@ -167,13 +167,7 @@ const CheckoutShippingInfo = ({
             value={formik.values.address}
           />
         </div>
-        {/* <div className="w-100">
-          <input
-            type="text"
-            className="form-control"
-            placeholder="Apartment, Suite, etc"
-          />
-        </div> */}
+
         <div className="flex-grow-1">
           <div className="error">
             {formik.touched.city && formik.errors.city}
@@ -188,13 +182,6 @@ const CheckoutShippingInfo = ({
             value={formik.values.city}
           />
         </div>
-        {/* <div className="flex-grow-1">
-          <select name="" id="" className="form-control form-select">
-            <option value={""} selected disabled>
-              Select State
-            </option>
-          </select>
-        </div> */}
         <div className="flex-grow-1">
           <div className="error">
             {formik.touched.city && formik.errors.city}
